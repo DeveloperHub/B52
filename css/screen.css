@@ -15,9 +15,9 @@ header nav,
 header .logo { display: table-cell; vertical-align: middle;}
 
 /* Menu */
-header nav a { display: inline-block; font-size: 1.3em; background: #339900; color: #169104; display: inline-block; border: 1em solid #169104; border-radius: 4px; text-shadow: .1em .1em #333;}
-header nav a i { text-decoration: none; color: #fff;}
-header nav a:hover { background: red;}
+header nav a { display: inline-block; font-size: 1.3em; background: #339900; color: #fff; display: inline-block; border-radius: 4px; text-shadow: .1em .1em #333; width: 3em; height: 3em; line-height: 3em; text-align: center;}
+header nav i { text-decoration: none; color: #fff; line-height: 3em !important; }
+header nav a:hover { background: #B58641; color: #fff; text-decoration: none;}
 header nav a:hover i { text-decoration: none;}
 
 header nav.menu {}
@@ -64,3 +64,24 @@ a.twitter-login 	{ background: #54cdfd;}
 .lines-five { display: table-cell; margin: 0 0 0 .5em; position: relative; height: 2em; padding: 0 .5em;}
 .v-line { display: inline-block; width: .2em; height: 2em; background: #333;}
 .h-line { position: absolute; top: 1em; left: 0; width: 100%; height: .2em; background: #333;}
+
+/* Flash messages */
+.flash-messages {
+	padding: 1em;
+	margin: .5em;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+}
+.flash-messages i {float: left; margin: 0 .3em 0 0; font-size: 3em;}
+.flash-messages .header {display: block;}
+.message-success {border: 1px solid #9cda4b; background: #e6f9ce;}
+.message-error	{border: 1px solid #ed7f7f; background: #ffe5e5;}
+.message-notice	{border: 1px solid #7392d0; background: #dae6ff;}
+
+.message-success .header,
+.message-success i	{color: #61ad00;}
+.message-error .header,
+.message-error i	{color: #dc0000;}
+.message-notice .header,
+.message-notice i	{color: #2c4b8d;}

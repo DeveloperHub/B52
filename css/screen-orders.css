@@ -66,6 +66,27 @@ header td.t-active:hover a {}
 }
 .table-orders .table-n .btn-item {}
 
+/* Flash messages */
+.flash-messages {
+	padding: 1em;
+	margin: .5em;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+}
+.flash-messages i {float: left; margin: 0 .3em 0 0; font-size: 3em;}
+.flash-messages .header {display: block;}
+.message-success {border: 1px solid #9cda4b; background: #e6f9ce;}
+.message-error	{border: 1px solid #ed7f7f; background: #ffe5e5;}
+.message-notice	{border: 1px solid #7392d0; background: #dae6ff;}
+
+.message-success .header,
+.message-success i	{color: #61ad00;}
+.message-error .header,
+.message-error i	{color: #dc0000;}
+.message-notice .header,
+.message-notice i	{color: #2c4b8d;}
+
 /* Gradients */
 .gra-gray,
 tr:nth-child(odd).gra-gray { 
