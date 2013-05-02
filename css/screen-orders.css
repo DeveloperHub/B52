@@ -14,7 +14,7 @@ header i 			{ text-decoration: none; float: left; font-size: 1.5em; margin: 0 .3
 header td 			{ width: 50%;}
 header .btn-orders  { color: #cc0000;}
 header .btn-history { color: #339933;}
-header a:hover 		{ color: #669933;}
+header a:hover 		{ }
 header a:hover i 	{ text-decoration: none;}
 header td.t-number 	{ width: 6%;}
 header td.t-active,
@@ -31,16 +31,50 @@ header td.t-active:hover a {}
 .table-orders .table-n 		{ width: 6%; border-right: .1em solid silver; text-align: center;}
 .table-orders .order-drinks { border-right: .1em solid silver;}
 .table-orders .table-food 	{ }
+.table-orders i.icon-spin 	{ font-size: 4em; display: block; text-align: center; color: silver;}
 
 .table-orders tr:nth-child(even) {background: #eee;}
 .table-orders tr:nth-child(odd) {background: #fff}
 
-.table-orders .t-number 	{ display: inline-block; border: .1em solid #997b43; background: #f3e2c7; text-align: center; width: 2em; height: 2em; line-height: 2em; font-size: 1.5em; -webkit-border-radius: 1em; -moz-border-radius: 1em; border-radius: 1em;}
+.table-orders .t-number 	{
+	display: inline-block;
+	border: .1em solid #0a6592;
+	background: #0088cc;
+	text-align: center;
+	width: 2em;
+	height: 2em;
+	line-height: 2em;
+	font-size: 1.5em;
+	-webkit-border-radius: 1em;
+	-moz-border-radius: 1em;
+	border-radius: 1em;
+	color: #fff;
+}
 .table-orders .t-time 		{ padding: .5em;}
 .table-orders .t-buttons 	{}
 .table-orders .t-buttons a  { display: block; text-decoration: none;}
 
 .table-orders ul 			{ margin: 0; list-style-type: none; }
+.table-orders li 			{ 
+	border: 1px solid silver;
+	padding: .2em;
+	margin: 0 0 .3em;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	background: #ffffff;
+	background: -moz-linear-gradient(top,  #ffffff 0%, #f1f1f1 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#f1f1f1));
+	background: -webkit-linear-gradient(top,  #ffffff 0%,#f1f1f1 100%);
+	background: -o-linear-gradient(top,  #ffffff 0%,#f1f1f1 100%);
+	background: -ms-linear-gradient(top,  #ffffff 0%,#f1f1f1 100%);
+	background: linear-gradient(to bottom,  #ffffff 0%,#f1f1f1 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f1f1f1',GradientType=0 );
+}
+.table-orders li.item-done {background: #ededed;}
+.table-orders li.item-done i {color: #666 !important;}
+.table-orders li.item-done span { text-decoration: line-through;}
+.table-orders li span 		{ line-height: 2em;}
 
 .item-done { text-decoration: line-through; color: #666; }
 .item-done .btn-item * { text-decoration: none; color: #666 !important;}
@@ -48,9 +82,11 @@ header td.t-active:hover a {}
 /* Table buttons */
 .table-orders .btn-item a     { text-decoration: none;}
 .table-orders a i 			  { font-size: 2em; line-height: 1em;}
-.table-orders a .icon-spinner { color: #ff9933;}
+.table-orders a .icon-tags,
+.table-orders a .icon-star 	  { color: #ff9933;}
 .table-orders a .icon-ok 	  { color: #669933;}
-.table-orders a i.ico-done 	  { color: #666;}
+.table-orders a i.ico-done 	  { color: #666; text-decoration: none;}
+.table-orders a:hover 		  { text-decoration: none;}
 .table-orders a i:hover,
 .table-orders a i:active 	  { color: #cc3333;}
 
