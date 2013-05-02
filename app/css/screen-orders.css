@@ -1,0 +1,93 @@
+/* Tables */
+.clean-table { width: 100%; border-collapse: collapse;}
+.clean-table tr { padding: 0; margin: 0;}
+.clean-table td { padding: 0; margin: 0; border: 1px solid silver;}
+
+/* Layout */
+header .clean-table {}
+header .clean-table td {padding: 1em;}
+header a.logo { display: block; text-align: center;}
+
+/* Menu */
+header a 			{ display: block; font-size: 1.3em; line-height: 1.5em;}
+header i 			{ text-decoration: none; float: left; font-size: 1.5em; margin: 0 .3em 0 0; color: #666;}
+header td 			{ width: 50%;}
+header .btn-orders  { color: #cc0000;}
+header .btn-history { color: #339933;}
+header a:hover 		{ color: #669933;}
+header a:hover i 	{ text-decoration: none;}
+header td.t-number 	{ width: 6%;}
+header td.t-active,
+header td:hover  	{ }
+header td.t-active a,
+header td a:hover { }
+header td.t-active:hover {}
+header td.t-active:hover a {}
+
+/* Orders */
+.table-orders 				{ }
+.table-orders td:hover 		{ background: #f3e2c7;}
+.table-orders td 			{ border-bottom: .1em solid silver;border-top: none; padding: .5em; vertical-align: top; width: 50%;}
+.table-orders .table-n 		{ width: 6%; border-right: .1em solid silver; text-align: center;}
+.table-orders .order-drinks { border-right: .1em solid silver;}
+.table-orders .table-food 	{ }
+
+.table-orders tr:nth-child(even) {background: #eee;}
+.table-orders tr:nth-child(odd) {background: #fff}
+
+.table-orders .t-number 	{ display: inline-block; border: .1em solid #997b43; background: #f3e2c7; text-align: center; width: 2em; height: 2em; line-height: 2em; font-size: 1.5em; -webkit-border-radius: 1em; -moz-border-radius: 1em; border-radius: 1em;}
+.table-orders .t-time 		{ padding: .5em;}
+.table-orders .t-buttons 	{}
+.table-orders .t-buttons a  { display: block; text-decoration: none;}
+
+.table-orders ul 			{ margin: 0; list-style-type: none; }
+
+.item-done { text-decoration: line-through; color: #666; }
+.item-done .btn-item * { text-decoration: none; color: #666 !important;}
+
+/* Table buttons */
+.table-orders .btn-item a     { text-decoration: none;}
+.table-orders a i 			  { font-size: 2em; line-height: 1em;}
+.table-orders a .icon-spinner { color: #ff9933;}
+.table-orders a .icon-ok 	  { color: #669933;}
+.table-orders a i.ico-done 	  { color: #666;}
+.table-orders a i:hover,
+.table-orders a i:active 	  { color: #cc3333;}
+
+.btn-item {
+	background: #fff;
+	display: inline-block;
+	border: .1em solid silver;
+	padding: .2em;
+	margin: 0 0 0 .3em;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+.table-orders .table-n .btn-item {}
+
+/* Gradients */
+.gra-gray,
+tr:nth-child(odd).gra-gray { 
+	background: #ffffff;
+	background: -moz-linear-gradient(top,  #ffffff 0%, #e0e0e0 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e0e0e0));
+	background: -webkit-linear-gradient(top,  #ffffff 0%,#e0e0e0 100%);
+	background: -o-linear-gradient(top,  #ffffff 0%,#e0e0e0 100%);
+	background: -ms-linear-gradient(top,  #ffffff 0%,#e0e0e0 100%);
+	background: linear-gradient(to bottom,  #ffffff 0%,#e0e0e0 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e0e0e0',GradientType=0 );
+	padding: 1em; 
+	border-bottom: .2em solid silver;
+}
+.gra-brown,
+tr:nth-child(odd).gra-brown {
+	background: #f3e2c7;
+	background: -moz-linear-gradient(top,  #ffffff 0%, #f3e2c7 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#f3e2c7));
+	background: -webkit-linear-gradient(top,  #ffffff 0%,#f3e2c7 100%);
+	background: -o-linear-gradient(top,  #ffffff 0%,#f3e2c7 100%);
+	background: -ms-linear-gradient(top,  #ffffff 0%,#f3e2c7 100%);
+	background: linear-gradient(to bottom,  #ffffff 0%,#f3e2c7 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f3e2c7',GradientType=0 );
+}
