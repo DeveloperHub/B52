@@ -1,0 +1,66 @@
+header { 
+	background: #ffffff;
+	background: -moz-linear-gradient(top,  #ffffff 0%, #e0e0e0 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e0e0e0));
+	background: -webkit-linear-gradient(top,  #ffffff 0%,#e0e0e0 100%);
+	background: -o-linear-gradient(top,  #ffffff 0%,#e0e0e0 100%);
+	background: -ms-linear-gradient(top,  #ffffff 0%,#e0e0e0 100%);
+	background: linear-gradient(to bottom,  #ffffff 0%,#e0e0e0 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e0e0e0',GradientType=0 );
+	padding: 1em; 
+	border-bottom: .2em solid silver;
+}
+.header-box { display: table; width: 100%;}
+header nav,
+header .logo { display: table-cell; vertical-align: middle;}
+
+/* Menu */
+header nav a { display: inline-block; font-size: 1.3em; background: #339900; color: #169104; display: inline-block; border: 1em solid #169104; border-radius: 4px; text-shadow: .1em .1em #333;}
+header nav a i { text-decoration: none; color: #fff;}
+header nav a:hover { background: red;}
+header nav a:hover i { text-decoration: none;}
+
+header nav.menu {}
+header div.logo {text-align: center; font-size: 2em; color: #339900; }
+header div.logo i { color: #666;}
+header nav.user {text-align: right;}
+
+a.big-btn { display: block; margin: 1em; padding: 1em; color: #fff; text-decoration: none; border-radius: 4px; line-height: 2em; text-shadow: .1em .1em #333;}
+a.big-btn:hover { background: #339900;}
+a.big-btn i {font-size: 1.8em;}
+a.big-btn span { font-size: 1.2em; display: inline-block; padding: 0 0 0 .5em;}
+a.google-login 	{ background: #db4a37;}
+a.facebook-login { background: #3b5998;}
+a.twitter-login 	{ background: #54cdfd;}
+
+/* Section */
+.section-box {}
+
+/* Categories I. */
+.section-menu {}
+.section-menu a.menu-item,
+.menu-header { display: block; padding: 1em; border-bottom: 1px solid silver; font-size: 1.5em; color: #666; clear: both;}
+.section-menu a:hover { background: #f8f8f8; color: #169104; text-decoration: none;}
+.section-menu i { color: #B58641; float: right; margin: 0 .5em 0 0;}
+.section-menu a.menu-item .icon-chevron-right {}
+
+/* Categories II. */
+.menu-header {
+	background: #ffffff;
+	background: -moz-linear-gradient(top,  #ffffff 0%, #f3e2c7 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#f3e2c7));
+	background: -webkit-linear-gradient(top,  #ffffff 0%,#f3e2c7 100%);
+	background: -o-linear-gradient(top,  #ffffff 0%,#f3e2c7 100%);
+	background: -ms-linear-gradient(top,  #ffffff 0%,#f3e2c7 100%);
+	background: linear-gradient(to bottom,  #ffffff 0%,#f3e2c7 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f3e2c7',GradientType=0 );
+}
+.menu-header span { display: block; text-align: center; text-transform: uppercase; font-weight: bold;}
+.menu-header a { float: left; font-size: 2em; margin: -.2em 0 0 0;}
+.menu-header a:hover { background: transparent; color: #000;}
+
+/* Bill lines */
+.account-lines { display: table; margin: 1em 0 1em 0;}
+.lines-five { display: table-cell; margin: 0 0 0 .5em; position: relative; height: 2em; padding: 0 .5em;}
+.v-line { display: inline-block; width: .2em; height: 2em; background: #333;}
+.h-line { position: absolute; top: 1em; left: 0; width: 100%; height: .2em; background: #333;}
