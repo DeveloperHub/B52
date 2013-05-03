@@ -1,0 +1,62 @@
+<!DOCTYPE>
+<html lang="cs" id="cs" ng-app="b52"><head>
+    <title>{ B52</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/bootstrap-combined.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/screen.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header-box">
+            <nav class="menu" id="menu">
+                <a href="#" title="menu"><i class="icon-reorder"></i></a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li><a tabindex="-1" href="#">Objednávky</a></li>
+                    <li><a tabindex="-1" href="#">Účet</a></li>
+                    <li><a tabindex="-1" href="#">Přivolání obsluhy</a></li>
+                    <li class="divider"></li>
+                </ul>
+            </nav>
+            <div class="logo">{ B52</div>
+            <nav class="user" id="user">
+                <a href="" title="user"><i class="icon-user"></i></a>
+            </nav>
+        </div>
+    </header>
+    <div ng-view></div>
+    <!-- Bill counts -->
+    <section class="section-box">
+        <div class="account-lines">
+            <div class="lines-five">
+                <div class="h-line"></div>
+                <div class="v-line"></div>
+                <div class="v-line"></div>
+                <div class="v-line"></div>
+                <div class="v-line"></div>
+            </div>
+            <div class="lines-five">
+                <div class="v-line"></div>
+                <div class="v-line"></div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        © { DeveloperHub for Google I/O
+    </footer>
+
+    <!-- In production use:
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+    -->
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular/angular-resource.js"></script>
+    <script src="lib/bootstrap.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/directives.js"></script>
+</body>
+</html>
