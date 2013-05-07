@@ -1,10 +1,7 @@
 {block content}
 
 <section class="section-box">
-	<nav class="section-menu">
-		<a n:href="Offer:" class="menu-item"><i class="icon-food"></i> jídlo</a>
-		<a n:href="Offer:" class="menu-item"><i class="icon-glass"></i> pití</a>
-		<a n:href="Offer:" class="menu-item"><i class="icon-coffee"></i> dezert</a>
-		<a n:href="News:" class="menu-item"><i class="icon-twitter"></i> novinky</a>
+	<nav class="section-menu" n:foreach="$mainMenu as $item">
+		<a n:href="{$item->route}" class="menu-item"><i class="icon-{$item->icon}"></i>{$item->name}</a>
 	</nav>
 </section>

@@ -24,11 +24,13 @@ common:
 			expiration: 14 days
 
 	services:
-		authenticator: Authenticator
+		#authenticator: Authenticator
 		routerFactory: RouterFactory
 		router: @routerFactory::createRouter
 		connection:
 			class: DibiConnection(%database%)
+
+		mainMenuRepository: MainMenuRepository
 
 	factories:
 
