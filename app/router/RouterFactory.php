@@ -1,0 +1,33 @@
+<?php
+
+use Nette\Application\Routers\RouteList,
+	Nette\Application\Routers\Route,
+	Nette\Application\Routers\SimpleRouter;
+
+
+/**
+ * Router factory.
+ */
+class RouterFactory
+{
+
+	/**
+	 * @return Nette\Application\IRouter
+	 */
+	public function createRouter()
+	{
+		$router = new RouteList();
+
+		$router[] = $adminRouter = new RouteList('Admin');
+		$adminRouter[] = new Route('admin/<presenter>[/<action>][/<id>]', 'Homepage:default');
+
+		$router[] = $waitressRouter = new RouteList('Waitress');
+		$waitressRouter[] = new Route('waitress/<presenter>[/<action>][/<id>]', 'Orders:default');
+
+		$router[] = $clientRouter = new RouteList('Client');
+		$clientRouter[] = new Route('<presenter>/<action>[/<id>]', 'MainMenu:default');
+
+		return $router;
+	}
+
+}

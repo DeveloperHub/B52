@@ -1,0 +1,41 @@
+{**
+ * B52 Application layout template.
+ *
+ * @param string   $basePath web base path
+ * @param string   $robots   tell robots how to index the content of a page (optional)
+ * @param array    $flashes  flash messages
+ *}
+
+<!DOCTYPE>
+<html lang="cs" id="cs"><head>
+	<title>{block title|striptags|upper}{ B52{/block}</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="{$basePath}/css/bootstrap-combined.min.css" rel="stylesheet">
+	<link href="{$basePath}/css/font-awesome.min.css" rel="stylesheet">
+	<link href="{$basePath}/css/screen.css" rel="stylesheet">
+	{block head}{/block}
+</head>
+<body>
+<header>
+	{include @header.latte}
+</header>
+
+	<div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
+
+	{include #content}
+
+	{include @billcounts.latte}
+
+<footer>
+	© { DeveloperHub for Google I/O
+</footer>
+
+{block scripts}
+<script src="{$basePath}/js/jquery.js"></script>
+<script src="{$basePath}/js/netteForms.js"></script>
+<script src="{$basePath}/js/main.js"></script>
+<script src="{$basePath}/js/bootstrap.min.js"></script>
+{/block}
+</body>
+</html>
