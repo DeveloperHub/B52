@@ -11,6 +11,7 @@ common:
 			host: localhost
 			database: b52
 			lazy: true
+			profiler: true
 
 	php:
 		date.timezone: Europe/Prague
@@ -31,6 +32,8 @@ common:
 			class: DibiConnection(%database%)
 
 		mainMenuRepository: MainMenuRepository
+		categoriesRepository: CategoriesRepository
+		itemsRepository: ItemsRepository
 
 	factories:
 

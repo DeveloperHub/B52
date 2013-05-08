@@ -2,13 +2,17 @@
 
 <section class="section-box">
 	<nav class="section-menu">
-		<div class="menu-header">
-			<a n:href="MainMenu:"><i class="icon-circle-arrow-left"></i> </a> <span><i class="icon-food"></i> jídlo</span>
+		<div n:if="$parent" class="menu-header">
+			<a n:href="default $parent->id_categories"><i class="icon-circle-arrow-left"></i></a><span><i class="icon-"></i>{$parent->name}</span>
 		</div>
-		<a n:href="default" class="menu-item"><i class="icon-chevron-right"></i> pizzy</a>
-		<a n:href="default" class="menu-item"><i class="icon-chevron-right"></i> saláty</a>
-		<a n:href="default" class="menu-item"><i class="icon-chevron-right"></i> těstoviny</a>
-		<a n:href="default" class="menu-item"><i class="icon-chevron-right"></i> hovězí maso</a>
-		<a n:href="default" class="menu-item"><i class="icon-chevron-right"></i> kuřecí maso</a>
+		<a n:foreach="$categories as $category" n:href="default $category->id" class="menu-item">
+			<i class="icon-{$category->icon ? $category->icon : 'chevron-right'}"></i>{$category->name}
+		</a>
+		<a n:foreach="$items as $item" n:href="detail $item->id" class="menu-item">
+			<i class="icon-chevron-right"></i>{$item->name} {if $item->quantity}<small>{$item->quantity}</small> {/if} <em>{$item->price|currency}</em>
+		</a>
+		<a n:if="!$parent" n:foreach="$mainMenu as $item" n:href="$item->route" class="menu-item">
+			<i class="icon-{$item->icon}"></i>{$item->name}
+		</a>
 	</nav>
 </section>
