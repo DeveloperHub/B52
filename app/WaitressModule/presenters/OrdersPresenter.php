@@ -12,12 +12,16 @@ class OrdersPresenter extends BasePresenter
 	/** @var \OrdersRepository */
 	private $ordersRepository;
 
+	/** @var \FlashMessagesRepository */
+	private $flashMessagesRepository;
+
 
 	protected function startup()
 	{
 		parent::startup();
 
 		$this->ordersRepository = $this->context->ordersRepository;
+		$this->flashMessagesRepository = $this->context->flashMessagesRepository;
 	}
 
 
@@ -33,8 +37,24 @@ class OrdersPresenter extends BasePresenter
 	 */
 	public function handleChangeStatus($id, $status)
 	{
-		$data = array('status' => $status);
-		$this->ordersRepository->update($data, $id);
+		$update = array('status' => $status);
+		$this->ordersRepository->update($update, $id);
+
+		$order = $this->ordersRepository->findWithItemById($id);
+
+		$message =
+			($status == 'in progress' ? 'Připravují' : ($status == 'done' ? 'Nesou' : 'Zrušili')) .
+			' objednávku: ' . $order->count . 'x ' . $order->name
+		;
+		$insert = array(
+			'posted' => new DateTime,
+			'from' => 'waitress',
+			'to' => 'client',
+			'to_client' => $order->id_clients,
+			'message' => $message,
+		);
+		$this->flashMessagesRepository->insert($insert);
+
 		$this->redirect('this');
 	}
 }

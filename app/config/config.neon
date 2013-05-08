@@ -35,6 +35,7 @@ common:
 		categoriesRepository: CategoriesRepository
 		itemsRepository: ItemsRepository
 		ordersRepository: OrdersRepository
+		flashMessagesRepository: FlashMessagesRepository
 
 	factories:
 

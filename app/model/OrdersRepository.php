@@ -13,7 +13,9 @@ class OrdersRepository extends BaseRepository
 	}
 
 
-	/***/
+	/**
+	 * @return array
+	 */
 	public function findForWaitress()
 	{
 		$query =
@@ -26,5 +28,22 @@ class OrdersRepository extends BaseRepository
 			'ORDER BY [ordered]'
 		;
 		return $this->db->query($query, $this->table, 'tables', 'clients', 'items', array('done', 'canceled'))->fetchAssoc('id_tables,type,id');
+	}
+
+
+	/**
+	 * @param int $id
+	 *
+	 * @return DibiRow|FALSE
+	 */
+	public function findWithItemById($id)
+	{
+		$query =
+			'SELECT [o].*,[i].* ' .
+			'FROM %n AS [o] ' .
+			'LEFT JOIN %n AS [i] ON [o.id_items]=[i.id] ' .
+			'WHERE [o.id]=%i'
+		;
+		return $this->db->query($query, $this->table, 'items', $id)->fetch();
 	}
 }
