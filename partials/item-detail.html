@@ -1,12 +1,9 @@
-itemka c.: {{item.id}}
+itemka c.: {{item._id}}
 
 <h1> {{item.name}} </h1>
 <section class="section-box">
-        <nav class="section-menu" style="display: block;">
-            
-        </nav>
         
-        <input name="quantity"/>
-        <a ng-click="toBinItem" href="#order/id/{{item._id}}"> Objednej {{item.name}} </a>
+        <input name="quantity"/> ks <br>
+        <button type="button" ng-click='toBinItem(item._id, item.name);'> Objednej {{item.name}} </button>
         
 </section>

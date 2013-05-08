@@ -27,6 +27,8 @@ function MenuCtrl($scope, Menu) {
     //console.log($scope);
     
   }
+  
+      
 }
 
 function CategoriesCtrl($scope, $routeParams, Category ) 
@@ -111,13 +113,9 @@ function ItemsDetailCtrl ($scope, $routeParams, Item )
     
     //ziskam radu items
     
-    
-    
-     $scope.item = Item.get({id: $routeParams.id}, function(item) {
+    $scope.item = Item.get({id: $routeParams.id}, function(item) {
     //$scope.mainImageUrl = phone.images[0];
-    
-    console.log($scope.item);
-    console.log(item);
+        console.log($scope.item);
     
     });
     
@@ -131,9 +129,11 @@ function ItemsDetailCtrl ($scope, $routeParams, Item )
     });
     */
     
-   $scope.toBinItem = function(id) 
+   $scope.toBinItem = function(id, name)
    {
-       console.log('objednavam item: ' + id);
+       console.log('objednavam item: ' + id + ' jmenem ' + name);
+       
+       return false;
    }
     
 }
