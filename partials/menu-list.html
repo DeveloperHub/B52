@@ -1,0 +1,8 @@
+<h1> Menu </h1>
+<section class="section-box">
+        <!-- Category I. -->
+        <nav class="section-menu" style="display: block;">
+            <a href="#/categories/{{menu.type}}/parent" class="menu-item menu-{{menu.name}}" ng-repeat="menu in menus | filter:query | orderBy:name"><i class="icon-{{menu.name}}"></i> {{menu.name}} jídlo</a>
+        </nav>
+</section>
+

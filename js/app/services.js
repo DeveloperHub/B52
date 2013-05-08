@@ -5,7 +5,10 @@
  */
 
 // data server
-var server = 'http://b52test.apiary.io/api/v1/';
+//var server = 'http://b52test.apiary.io/api/v1/';
+//var server = 'http://b52.apiary.io/api/v1/';
+
+var server = 'http://b52mike.apiary.io/api/v1/';
 
 // application
 //var app = angular.module('b52Services', ['ngResource']);
@@ -30,7 +33,7 @@ angular.module('menuBaseServices', ['ngResource'])
 angular.module('menuServices', ['ngResource']).
     factory('Menu', function($resource){
     
-  return $resource(server + 'menu/', {}, {
+  return $resource(server + 'menu', {}, {
     query: {method:'GET', params:{}, isArray:true}
   });
  });
@@ -38,10 +41,10 @@ angular.module('menuServices', ['ngResource']).
   
  angular.module('categoryServices', ['ngResource']).
     factory('Category', function($resource){
-    return $resource(server + 'categories', {}, {
+    return $resource(server + 'categories/:type/:action', {}, {
       query: {method:'GET', params:{}, isArray:true},
-      get: {method:'GET', params:{}, isArray:true},
-      getItems: {url: '/categories/items/:@type' , method:'GET', params:{}, isArray:true},
+      get: {method:'GET', params:{ action : '' }, isArray:false},
+      getItems: {/*url: '/categories/items/:@type' ,*/ method:'GET', params:{ action : 'parent' }, isArray:true},
   });
  });
   
@@ -49,11 +52,10 @@ angular.module('menuServices', ['ngResource']).
 angular.module('itemServices', ['ngResource']).
     factory('Item', function($resource)
     {
-        return $resource(server + 'items/:id/type/:type', {}, {
+        return $resource(server + 'items/:id:type/:action', {}, {
         query: {method:'GET', params:{}, isArray:true},
-        //get: {method:'GET', params:{id:'{id}'}, isArray:true},
-        get: {method:'GET', params:{}, isArray:false}
-        //one: {url:server + 'items/detail' ,method:'GET', params:{id:'{id}'}, isArray:false}
+        get: {method:'GET', params:{}, isArray:false},
+        getOnCategory: {method:'GET', params:{ action : 'category'}, isArray:true}
     });
  })
     

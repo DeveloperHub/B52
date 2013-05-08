@@ -1,0 +1,20 @@
+<div style="display:{{ menu.categoriesvisible}}">
+    <h1>  {{currentCategory.name}} </h1>
+    <section class="section-box">
+            <!-- Category 2. -->
+            <nav class="section-menu" style="display: block;">
+                <a href="#/items/{{category.type}}/category" class="menu-item menu-{{category.type}}" ng-repeat="category in categories"><i class="icon-category icon-{{category.type}}"></i> {{category.name}} </a>
+            </nav>
+    </section>
+</div>
+
+<!--
+<div style="display:{{ menu.itemsvisible}}">
+    <h1> Nabídka  </h1>
+    <section  class="section-box">
+            <nav class="section-menu" style="display: block;">
+                <a href="#/item/{{item._id}}" class="menu-item menu" ng-repeat="item in menu.items"><i class="icon-{{item.name}}"></i> {{item.name}} </a>
+            </nav>
+    </section>
+</div>
+-->
