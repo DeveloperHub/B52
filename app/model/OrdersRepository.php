@@ -46,4 +46,20 @@ class OrdersRepository extends BaseRepository
 		;
 		return $this->db->query($query, $this->table, 'items', $id)->fetch();
 	}
+
+
+	/***/
+	public function findForHistory($limit, $offset)
+	{
+		$query =
+			'SELECT [o].*,[t.number],[c.name] AS [client],[i.type],[i.name] AS [item],[i.quantity] ' .
+			'FROM %n AS [o] ' .
+			'LEFT JOIN %n AS [t] ON [o.id_tables]=[t.id] ' .
+			'LEFT JOIN %n AS [c] ON [o.id_clients]=[c.id] ' .
+			'LEFT JOIN %n AS [i] ON [o.id_items]=[i.id] ' .
+			'ORDER BY [ordered] DESC' .
+			'%lmt %ofs'
+		;
+		return $this->db->query($query, $this->table, 'tables', 'clients', 'items', $limit, $offset)->fetchAll();
+	}
 }

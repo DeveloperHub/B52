@@ -1,3 +1,16 @@
 {block content}
 
-<h1>historie</h1>
+<dl n:foreach="$orders as $order">
+	<dt>Čas</dt><dd>{$order->ordered|date:'j. n. Y H:i'}</dd>
+	<dt>Objednávka</dt><dd>{$order->count}x {$order->item}{if $order->quantity} ({$order->quantity}){/if}</dd>
+	<dt>Stůl</dt><dd>{$order->number}</dd>
+	<dt>Stav</dt><dd>
+		{if $order->status == 'wait'}čeká
+		{elseif $order->status == 'in progress'}připravuje se
+		{elseif $order->status == 'done'}hotovo
+		{elseif $order->status == 'cancel'}ke zrušení
+		{elseif $order->status == 'canceled'}zrušeno
+	{/if}</dd>
+</dl>
+
+{control paginator}

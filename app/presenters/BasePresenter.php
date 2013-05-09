@@ -11,4 +11,16 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 
 		$this->template->registerHelperLoader('Helpers::loader');
 	}
+
+
+	/**
+	 * @return VisualPaginator
+	 */
+	protected function createComponentPaginator()
+	{
+		$visualPaginator = new VisualPaginator;
+		$paginator = $visualPaginator->getPaginator();
+		$paginator->setItemsPerPage(25);
+		return $visualPaginator;
+	}
 }
