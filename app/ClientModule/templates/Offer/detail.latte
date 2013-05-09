@@ -2,9 +2,14 @@
 
 <h1>{$item->name}</h1>
 <p>{$item->detail}</p>
-<dl>
-	<dt>množství</dt>
-	<dd>{$item->quantity}</dd>
-	<dt>cena</dt>
-	<dd>{$item->price|currency}</dd>
-</dl>
+{ifset $variations}
+<a n:foreach="$variations as $variation" n:href="Order:item, $item->id, $variation->id">
+	{$variation->quantity} - {$variation->price|currency}
+	<span>Objednat</span>
+</a>
+{else}
+<a n:href="Order:item, $item->id">
+	{$item->quantity} - {$item->price|currency}
+	<span>Objednat</span>
+</a>
+{/ifset}

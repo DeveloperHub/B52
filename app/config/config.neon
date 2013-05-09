@@ -34,6 +34,7 @@ common:
 		mainMenuRepository: MainMenuRepository
 		categoriesRepository: CategoriesRepository
 		itemsRepository: ItemsRepository
+		itemsVariationsRepository: ItemsVariationsRepository
 		ordersRepository: OrdersRepository
 		flashMessagesRepository: FlashMessagesRepository
 
