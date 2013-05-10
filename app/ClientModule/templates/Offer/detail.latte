@@ -2,7 +2,7 @@
 
 <h1>{$item->name}</h1>
 <p>{$item->detail}</p>
-{ifset $variations}
+{if count($variations)}
 <a n:foreach="$variations as $variation" n:href="Order:item, $item->id, $variation->id">
 	{$variation->quantity} - {$variation->price|currency}
 	<span>Objednat</span>
@@ -12,4 +12,10 @@
 	{$item->quantity} - {$item->price|currency}
 	<span>Objednat</span>
 </a>
-{/ifset}
+{/if}
+<div n:foreach="$extras as $name => $extra">
+	<h2>{$name}</h2>
+	<ul>
+		<li n:foreach="$extra as $item">{$item->name} - {$item->quantity} - {$item->price|currency}</li>
+	</ul>
+</div>

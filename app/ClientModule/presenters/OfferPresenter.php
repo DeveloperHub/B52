@@ -19,6 +19,8 @@ class OfferPresenter extends BasePresenter
 	/** @var \ItemsVariationsRepository */
 	private $itemsVariationsRepository;
 
+	/** @var \ExtrasRepository */
+	private $extrasRepository;
 
 	protected function startup()
 	{
@@ -28,6 +30,7 @@ class OfferPresenter extends BasePresenter
 		$this->itemsRepository = $this->context->itemsRepository;
 		$this->itemsVariationsRepository = $this->context->itemsVariationsRepository;
 		$this->mainMenuRepository = $this->context->mainMenuRepository;
+		$this->extrasRepository = $this->context->extrasRepository;
 	}
 
 
@@ -52,7 +55,11 @@ class OfferPresenter extends BasePresenter
 	 */
 	public function renderDetail($id)
 	{
-		$this->template->item = $this->itemsRepository->findById($id);
+		$item = $this->itemsRepository->findById($id);
+		$this->template->item = $item;
 		$this->template->variations = $this->itemsVariationsRepository->findByItem($id);
+		$extras = $this->extrasRepository->findByCategory($item->id_categories);
+		array_merge($extras, $this->extrasRepository->findByItem($id));
+		$this->template->extras = $extras;
 	}
 }

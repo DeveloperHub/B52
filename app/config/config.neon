@@ -37,6 +37,7 @@ common:
 		itemsVariationsRepository: ItemsVariationsRepository
 		ordersRepository: OrdersRepository
 		flashMessagesRepository: FlashMessagesRepository
+		extrasRepository: ExtrasRepository
 
 	factories:
 
