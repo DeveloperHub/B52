@@ -15,6 +15,9 @@ class OrdersPresenter extends BasePresenter
 	/** @var \FlashMessagesRepository */
 	private $flashMessagesRepository;
 
+	/** @var \ExtrasRepository */
+	private $extrasRepository;
+
 
 	protected function startup()
 	{
@@ -22,12 +25,19 @@ class OrdersPresenter extends BasePresenter
 
 		$this->ordersRepository = $this->context->ordersRepository;
 		$this->flashMessagesRepository = $this->context->flashMessagesRepository;
+		$this->extrasRepository = $this->context->extrasRepository;
 	}
 
 
 	public function renderDefault()
 	{
-		$this->template->tables = $this->ordersRepository->findForWaitress();
+		$tables = $this->ordersRepository->findForWaitress();
+		foreach ($tables as &$table) {
+			foreach ($table['food'] as &$food) {
+				$food->extras = $this->extrasRepository->findByIds($food->extras_items);
+			}
+		}
+		$this->template->tables = $tables;
 	}
 
 

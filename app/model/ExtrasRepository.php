@@ -57,4 +57,17 @@ class ExtrasRepository extends BaseRepository
 		return $this->db->query($query, $this->table, $this->subtable, $this->keysTable, $item)->fetchAssoc('extra,id');
 	}
 
+
+	/**
+	 * @param string $ids "id:id:id"
+	 *
+	 * @return array of DibiRow
+	 */
+	public function findByIds($ids)
+	{
+		$ids = explode(':', $ids);
+		$query = 'SELECT * FROM %n WHERE [id] IN %in';
+		return $this->db->query($query, $this->subtable, $ids)->fetchAll();
+	}
+
 }

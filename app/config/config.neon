@@ -38,6 +38,8 @@ common:
 		ordersRepository: OrdersRepository
 		flashMessagesRepository: FlashMessagesRepository
 		extrasRepository: ExtrasRepository
+		tablesRepository: TablesRepository
+		clientsRepository: ClientsRepository
 
 	factories:
 

@@ -25,6 +25,7 @@ class RouterFactory
 		$waitressRouter[] = new Route('waitress/<presenter>[/<action>][/<id>]', 'Orders:default');
 
 		$router[] = $clientRouter = new RouteList('Client');
+		$clientRouter[] = new Route('<presenter=Orders>/<action=item>/<id>[/<idVariation>]');
 		$clientRouter[] = new Route('<presenter>/<action>[/<id>]', 'Offer:default');
 
 		return $router;
