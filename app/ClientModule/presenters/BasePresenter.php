@@ -16,6 +16,9 @@ abstract class BasePresenter extends \BasePresenter
 	/** @var int */
 	protected $idClient;
 
+	/** @var \Nette\Http\SessionSection */
+	protected $user;
+
 
 	protected function startup()
 	{
@@ -25,6 +28,11 @@ abstract class BasePresenter extends \BasePresenter
 		$this->flashMessagesRepository = $this->context->flashMessagesRepository;
 
 		$this->idClient = 1;
+
+		$this->user = $this->getSession('user');
+		if (!isset($this->user->idTable)) {
+			$this->user->idTable = 1;
+		}
 	}
 
 

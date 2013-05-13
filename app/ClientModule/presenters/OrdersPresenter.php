@@ -126,7 +126,7 @@ class OrdersPresenter extends BasePresenter
 
 		$options = $this->tablesRepository->getForSelect();
 		$form->addSelect('table', 'Stůl č.', $options)
-			->setDefaultValue(1)
+			->setDefaultValue($this->user->idTable)
 			->addRule(Form::IS_IN, 'Stůl musí být z výběru.', array_keys($options));
 
 		$form->addSubmit('send', 'Objednat');
@@ -144,7 +144,7 @@ class OrdersPresenter extends BasePresenter
 	{
 		$values = $form->getValues();
 
-		$this->clientsRepository->update(array('id_tables' => $values->table), $this->idClient);
+		$this->user->idTable = $values->table;
 
 		$data = array(
 			'id_items' => $values->item,
