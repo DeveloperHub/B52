@@ -40,6 +40,7 @@ common:
 		extrasRepository: ExtrasRepository
 		tablesRepository: TablesRepository
 		clientsRepository: ClientsRepository
+		newsRepository: NewsRepository
 
 	factories:
 

@@ -10,6 +10,9 @@ abstract class BasePresenter extends \BasePresenter
 	/** @var \ExtrasRepository */
 	private $extrasRepository;
 
+	/** @var \FlashMessagesRepository */
+	private $flashMessagesRepository;
+
 	/** @var int */
 	protected $idClient;
 
@@ -19,8 +22,17 @@ abstract class BasePresenter extends \BasePresenter
 		parent::startup();
 
 		$this->extrasRepository = $this->context->extrasRepository;
+		$this->flashMessagesRepository = $this->context->flashMessagesRepository;
 
 		$this->idClient = 1;
+	}
+
+
+	protected function beforeRender()
+	{
+		parent::beforeRender();
+
+		$this->template->countMessages = $this->flashMessagesRepository->getCountUnreadForClient($this->idClient);
 	}
 
 

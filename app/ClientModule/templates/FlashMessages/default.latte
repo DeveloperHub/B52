@@ -1,0 +1,11 @@
+<h1>Notifikace</h1>
+<a n:href="Offer:">zavřít</a>
+<ul n:if="count($messages)">
+	<li n:foreach="$messages as $message" n:class="$message->unread ? unread">
+		<a n:href="Read! $message->id">
+			<small>{$message->posted|date: 'd.m. Y H:m'}</small>
+			<strong>{if $message->from == 'waitress'}Z baru vzkazují{elseif $message->from == "system"}Systém říká{/if}:</strong>
+			{$message->message}
+		</a>
+	</li>
+</ul>
