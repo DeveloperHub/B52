@@ -117,7 +117,7 @@ class OrdersPresenter extends BasePresenter
 
 		$extrasContainer = $form->addContainer('extras');
 		foreach ($this->extras as $name => $extra) {
-			$options = array();
+			$options = array('' => '---');
 			foreach ($extra as $item) {
 				$options[$item->id] = $item->name;
 			}
