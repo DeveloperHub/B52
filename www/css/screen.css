@@ -15,9 +15,20 @@ header nav,
 header .logo { display: table-cell; vertical-align: middle;}
 
 /* Menu */
+<<<<<<< HEAD:www/css/screen.css
 header nav a { display: inline-block; font-size: 1.3em; background: #339900; color: #169104; display: inline-block; border: 1em solid #169104; border-radius: 4px; text-shadow: .1em .1em #333;}
 header nav a i { text-decoration: none; color: #fff;}
 header nav a:hover { background: red;}
+=======
+<<<<<<< HEAD
+header nav a { display: inline-block; font-size: 1.3em; background: #339900; color: #fff; display: inline-block; border-radius: 4px; text-shadow: .1em .1em #333; width: 3em; height: 3em; line-height: 3em; text-align: center;}
+header nav i { text-decoration: none; color: #fff; line-height: 3em !important; }
+=======
+header nav a { display: inline-block; font-size: 1.3em; background: #339900; color: #fff; display: inline-block; text-decoration: none; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; text-shadow: .1em .1em #333; width: 2em; height: 2em; line-height: 2em; text-align: center;}
+header nav i { text-decoration: none; color: #fff; line-height: 2em !important; }
+>>>>>>> 93453d7... Detail
+header nav a:hover { background: #B58641; color: #fff; text-decoration: none;}
+>>>>>>> bb28cd3... Detail:css/screen.css
 header nav a:hover i { text-decoration: none;}
 
 header nav.menu {}
@@ -56,8 +67,32 @@ a.twitter-login 	{ background: #54cdfd;}
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f3e2c7',GradientType=0 );
 }
 .menu-header span { display: block; text-align: center; text-transform: uppercase; font-weight: bold;}
+<<<<<<< HEAD
 .menu-header a { float: left; font-size: 2em; margin: -.2em 0 0 0;}
+=======
+.menu-header small { text-align: center; display: block;}
+.menu-header a { float: left; font-size: 1.5em; margin: -.2em 0 0 0; text-decoration: none;}
+>>>>>>> 93453d7... Detail
 .menu-header a:hover { background: transparent; color: #000;}
+
+/* Detail */
+.item-detail { padding: .5em;}
+a.btn-order { 
+	display: block;
+	background: #B58641;
+	color: #fff;
+	text-decoration: none;
+	font-size: 1.4em;
+	padding: .4em;
+	margin: .4em 0;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+a.btn-order small { display: block; font-size: .7em; font-style: italic;}
+a.btn-order i { color: #fff; margin: 0 .2em; font-size: 1.5em;}
+a.btn-order:hover {background: #d00206; color: #fff;}
+a.btn-order:hover i {}
 
 /* Bill lines */
 .account-lines { display: table; margin: 1em 0 1em 0;}
