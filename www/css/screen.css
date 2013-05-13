@@ -1,3 +1,94 @@
+html,
+button,
+input,
+select,
+textarea {
+    color: #222;
+}
+
+body {
+    font-size: 1em;
+    line-height: 1.4;
+    margin: 0;
+}
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+img {
+    vertical-align: middle;
+}
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.chromeframe {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+
+/* ===== Initializr Styles ==================================================
+   Author: Jonathan Verrecchia - verekia.com/initializr/responsive-template
+   ========================================================================== */
+
+body {
+    font: 16px/26px Helvetica, Helvetica Neue, Arial;
+}
+
+.wrapper {
+    width: 90%;
+    margin: 0 5%;
+}
+
+/* -------------------------------------------
+*
+*  Images
+*
+*/
+
+/* set image max width to 100% */
+img {
+	max-width: 100%;
+	height: auto;
+	width: auto\9; /* ie8 */
+}
+.ie7 img       {-ms-interpolation-mode: bicubic;} /* zapnuti kvalitnejshi resizingu, POZOR: je to pomalejsi */
+
+a 			   {color: #339900;}
+a img          {border: 0; vertical-align: middle; color: #339900;}
+a:hover img,
+a:focus img,
+a:active img   {}
+a i { text-decoration: none !important;}
+a i:hover {text-decoration: none !important;}
+
+/* Header */
 header { 
 	background: #ffffff;
 	background: -moz-linear-gradient(top,  #ffffff 0%, #e0e0e0 100%);
@@ -15,25 +106,15 @@ header nav,
 header .logo { display: table-cell; vertical-align: middle;}
 
 /* Menu */
-<<<<<<< HEAD:www/css/screen.css
-header nav a { display: inline-block; font-size: 1.3em; background: #339900; color: #169104; display: inline-block; border: 1em solid #169104; border-radius: 4px; text-shadow: .1em .1em #333;}
-header nav a i { text-decoration: none; color: #fff;}
-header nav a:hover { background: red;}
-=======
-<<<<<<< HEAD
-header nav a { display: inline-block; font-size: 1.3em; background: #339900; color: #fff; display: inline-block; border-radius: 4px; text-shadow: .1em .1em #333; width: 3em; height: 3em; line-height: 3em; text-align: center;}
-header nav i { text-decoration: none; color: #fff; line-height: 3em !important; }
-=======
 header nav a { display: inline-block; font-size: 1.3em; background: #339900; color: #fff; display: inline-block; text-decoration: none; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; text-shadow: .1em .1em #333; width: 2em; height: 2em; line-height: 2em; text-align: center;}
 header nav i { text-decoration: none; color: #fff; line-height: 2em !important; }
->>>>>>> 93453d7... Detail
 header nav a:hover { background: #B58641; color: #fff; text-decoration: none;}
->>>>>>> bb28cd3... Detail:css/screen.css
-header nav a:hover i { text-decoration: none;}
 
 header nav.menu {}
 header div.logo {text-align: center; font-size: 2em; color: #339900; }
 header div.logo i { color: #666;}
+header div.logo a {text-decoration: none; color: #339900;}
+header div.logo a:hover { color: #B58641;}
 header nav.user {text-align: right;}
 
 a.big-btn { display: block; margin: 1em; padding: 1em; color: #fff; text-decoration: none; border-radius: 4px; line-height: 2em; text-shadow: .1em .1em #333;}
@@ -44,16 +125,22 @@ a.google-login 	{ background: #db4a37;}
 a.facebook-login { background: #3b5998;}
 a.twitter-login 	{ background: #54cdfd;}
 
+/* Footer */
+
+footer { padding: .2em .5em;}
+
 /* Section */
 .section-box {}
 
 /* Categories I. */
 .section-menu {}
 .section-menu a.menu-item,
-.menu-header { display: block; padding: 1em; border-bottom: 1px solid silver; font-size: 1.5em; color: #666; clear: both;}
+.menu-header { display: block; padding: .8em; border-bottom: 1px solid silver; font-size: 1.5em; color: #666; clear: both; text-decoration: none;}
 .section-menu a:hover { background: #f8f8f8; color: #169104; text-decoration: none;}
 .section-menu i { color: #B58641; float: right; margin: 0 .5em 0 0;}
 .section-menu a.menu-item .icon-chevron-right {}
+
+.section-menu .list-item-price {display: block; font-size: .7em;}
 
 /* Categories II. */
 .menu-header {
@@ -67,13 +154,11 @@ a.twitter-login 	{ background: #54cdfd;}
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f3e2c7',GradientType=0 );
 }
 .menu-header span { display: block; text-align: center; text-transform: uppercase; font-weight: bold;}
-<<<<<<< HEAD
-.menu-header a { float: left; font-size: 2em; margin: -.2em 0 0 0;}
-=======
 .menu-header small { text-align: center; display: block;}
 .menu-header a { float: left; font-size: 1.5em; margin: -.2em 0 0 0; text-decoration: none;}
->>>>>>> 93453d7... Detail
 .menu-header a:hover { background: transparent; color: #000;}
+
+span.separator { color: #339900;}
 
 /* Detail */
 .item-detail { padding: .5em;}
@@ -94,8 +179,86 @@ a.btn-order i { color: #fff; margin: 0 .2em; font-size: 1.5em;}
 a.btn-order:hover {background: #d00206; color: #fff;}
 a.btn-order:hover i {}
 
+/* Notification */
+.notifi-header { background: #b3d4fc;}
+
+.notifi-list { margin: 0; padding: 0; list-style-type: none;}
+.notifi-list a { display: block; padding: 1em; text-decoration: none; color: #666; line-height: 1em;}
+.notifi-list li { border-bottom: 1px solid silver;}
+.notifi-list li:hover { background: #f3e2c7;}
+.notifi-list small { text-decoration: none;  display: block; font-size: .8em; line-height: .8em;}
+.notifi-list strong { color: #339900;}
+.notifi-list i {color: #B58641; float: right; margin: 0 .5em 0 0;}
+
 /* Bill lines */
 .account-lines { display: table; margin: 1em 0 1em 0;}
 .lines-five { display: table-cell; margin: 0 0 0 .5em; position: relative; height: 2em; padding: 0 .5em;}
 .v-line { display: inline-block; width: .2em; height: 2em; background: #333;}
 .h-line { position: absolute; top: 1em; left: 0; width: 100%; height: .2em; background: #333;}
+
+.h-line { position: absolute; top: 1em; left: 0; width: 100%; height: .2em; background: #333;}
+
+/* Detail */
+.item-detail { padding: .5em;}
+a.btn-order { 
+	display: block;
+	background: #B58641;
+	color: #fff;
+	text-decoration: none;
+	font-size: 1.4em;
+	padding: .4em;
+	margin: .4em 0;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+a.btn-order small { display: block; font-size: .7em; font-style: italic;}
+a.btn-order i { color: #fff; margin: 0 .2em; font-size: 1.5em;}
+a.btn-order:hover {background: #d00206; color: #fff;}
+a.btn-order:hover i {}
+
+/* Order */
+.border-h { height: .1em; margin: .4em 0; border-top: .1em dashed silver;}
+.order-form { }
+.order-form strong {} 
+.order-form input[type="text"] { width: 2em; height: 2em; border: .1em solid silver; text-align: center;}
+.order-form input[type="submit"] { background: #B58641; border: none; color: #fff; font-size: 1.2em; height: 1.8em; margin: .4em 0; padding: 0 .4em; cursor: pointer; width: 100%; 	-webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px;}
+.order-form input[type="submit"]:hover { background: #d00206; color: #fff;}
+.order-form h1 { margin-top: 0; }
+
+/* Loading, Ajax */
+div.loading {
+	background-color: #efefef;
+	background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.5) 35px, rgba(255,255,255,.5) 70px);
+	text-align: center;
+	padding: .7em;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+div.loading i { font-size: 2em; float: none; color: #666;}
+div.loading span { display: inline-block; font-size: 1.5em;}
+
+/* Flash messages */
+.flash-messages {
+	padding: 1em;
+	margin: .5em;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+}
+.flash-messages i { float: left; margin: 0 .3em 0 0; font-size: 3em;}
+.flash-messages .header { display: block;}
+.message-success { border: 1px solid #9cda4b; background: #e6f9ce;}
+.message-error	{ border: 1px solid #ed7f7f; background: #ffe5e5;}
+.message-notice	{ border: 1px solid #7392d0; background: #dae6ff;}
+
+.message-success .header,
+.message-success i	{ color: #61ad00;}
+.message-error .header,
+.message-error i	{ color: #dc0000;}
+.message-notice .header,
+.message-notice i	{ color: #2c4b8d;}
+
+.flash-messages-small { padding: .2em; margin: .2em; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px;}
+.flash-messages-small i { font-size: 1.5em;}

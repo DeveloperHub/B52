@@ -10,16 +10,16 @@
 		</a>
 		<a n:foreach="$items as $item" n:href="detail $item->id" class="menu-item">
 			<i class="icon-chevron-right"></i>{$item->name}
-			<div>
+			<span class="list-item-price">
 				{if count($item->variations)}
 					{foreach $item->variations as $variation}
-						[<small>{if $variation->quantity}{$variation->quantity} - {/if}{$variation->price|currency}</small>]
-						{sep}  {/sep}
+						<span>{if $variation->quantity}{$variation->quantity} - {/if}{$variation->price|currency}</span>
+						{sep}<span class="separator">|</span>{/sep}
 					{/foreach}
 				{else}
-					[<small>{if $item->quantity}{$item->quantity} - {/if}{$item->price|currency}</small>]
+					<span>{if $item->quantity}{$item->quantity} - {/if}{$item->price|currency}</span>
 				{/if}
-			</div>
+			</span>
 		</a>
 		<a n:if="!$parent" n:foreach="$mainMenu as $item" n:href="$item->route" class="menu-item">
 			<i class="icon-{$item->icon}"></i>{$item->name}

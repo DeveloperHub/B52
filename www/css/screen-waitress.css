@@ -1,3 +1,103 @@
+html,
+button,
+input,
+select,
+textarea {
+    color: #222;
+}
+
+body {
+    font-size: 1em;
+    line-height: 1.4;
+    margin: 0;
+}
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+img {
+    vertical-align: middle;
+}
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.chromeframe {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+
+/* ===== Initializr Styles ==================================================
+   Author: Jonathan Verrecchia - verekia.com/initializr/responsive-template
+   ========================================================================== */
+
+body {
+    font: 16px/26px Helvetica, Helvetica Neue, Arial;
+}
+
+.wrapper {
+    width: 90%;
+    margin: 0 5%;
+}
+
+/* -------------------------------------------
+*
+*  Links
+*
+*/
+a   			{outline: none; color: #175492;}
+a:visited       {}
+a:hover         {text-decoration: none;}
+a:focus, 
+a:active        {outline: thin dotted;}
+a i { text-decoration: none !important;}
+a i:hover {text-decoration: none !important;}
+
+/* -------------------------------------------
+*
+*  Images
+*
+*/
+
+/* set image max width to 100% */
+img {
+	max-width: 100%;
+	height: auto;
+	width: auto\9; /* ie8 */
+}
+.ie7 img       {-ms-interpolation-mode: bicubic;} /* zapnuti kvalitnejshi resizingu, POZOR: je to pomalejsi */
+
+a img          {border: 0; vertical-align: middle; color: #339900;}
+a:hover img,
+a:focus img,
+a:active img   {}
+
 /* Tables */
 .clean-table { width: 100%; border-collapse: collapse;}
 .clean-table tr { padding: 0; margin: 0;}
@@ -7,14 +107,17 @@
 header .clean-table {}
 header .clean-table td {padding: 1em;}
 header a.logo { display: block; text-align: center;}
+header a.logo i { text-align: center; display: block; margin: 0; float: none; font-size: 1.8em;}
+header a.logo:hover,
+header a.logo:hover i { color: #339933; text-decoration: none;}
 
 /* Menu */
-header a 			{ display: block; font-size: 1.3em; line-height: 1.5em;}
+header a 			{ display: block; font-size: 1.3em; line-height: 1.5em; text-decoration: none;}
 header i 			{ text-decoration: none; float: left; font-size: 1.5em; margin: 0 .3em 0 0; color: #666;}
-header td 			{ width: 50%;}
+header td 			{ }
 header .btn-orders  { color: #cc0000;}
 header .btn-history { color: #339933;}
-header a:hover 		{ color: #669933;}
+header a:hover 		{ }
 header a:hover i 	{ text-decoration: none;}
 header td.t-number 	{ width: 6%;}
 header td.t-active,
@@ -23,6 +126,8 @@ header td.t-active a,
 header td a:hover { }
 header td.t-active:hover {}
 header td.t-active:hover a {}
+header a:hover,
+header a:hover i		{ color: #339933 !important;}
 
 /* Orders */
 .table-orders 				{ }
@@ -31,33 +136,70 @@ header td.t-active:hover a {}
 .table-orders .table-n 		{ width: 6%; border-right: .1em solid silver; text-align: center;}
 .table-orders .order-drinks { border-right: .1em solid silver;}
 .table-orders .table-food 	{ }
+.table-orders i.icon-spin 	{ font-size: 4em; display: block; text-align: center; color: silver;}
 
 .table-orders tr:nth-child(even) {background: #eee;}
 .table-orders tr:nth-child(odd) {background: #fff}
 
-.table-orders .t-number 	{ display: inline-block; border: .1em solid #997b43; background: #f3e2c7; text-align: center; width: 2em; height: 2em; line-height: 2em; font-size: 1.5em; -webkit-border-radius: 1em; -moz-border-radius: 1em; border-radius: 1em;}
+.table-orders .t-number 	{
+	display: inline-block;
+	border: .1em solid #0a6592;
+	background: #0088cc;
+	text-align: center;
+	width: 2em;
+	height: 2em;
+	line-height: 2em;
+	font-size: 1.5em;
+	-webkit-border-radius: 1em;
+	-moz-border-radius: 1em;
+	border-radius: 1em;
+	color: #fff;
+}
 .table-orders .t-time 		{ padding: .5em;}
 .table-orders .t-buttons 	{}
 .table-orders .t-buttons a  { display: block; text-decoration: none;}
 
-.table-orders ul 			{ margin: 0; list-style-type: none; }
+.table-orders ul 			{ margin: 0; padding: 0; list-style-type: none; }
+.table-orders li 			{ 
+	border: 1px solid silver;
+	padding: .2em;
+	margin: 0 0 .3em;
+	clear: both;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	background: #ffffff;
+	background: -moz-linear-gradient(top,  #ffffff 0%, #f1f1f1 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#f1f1f1));
+	background: -webkit-linear-gradient(top,  #ffffff 0%,#f1f1f1 100%);
+	background: -o-linear-gradient(top,  #ffffff 0%,#f1f1f1 100%);
+	background: -ms-linear-gradient(top,  #ffffff 0%,#f1f1f1 100%);
+	background: linear-gradient(to bottom,  #ffffff 0%,#f1f1f1 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f1f1f1',GradientType=0 );
+}
+.table-orders li.item-done {background: #ededed;}
+.table-orders li.item-done i {color: #666 !important;}
+.table-orders li.item-done span { text-decoration: line-through;}
+.table-orders li span 		{ line-height: 2em;}
 
 .item-done { text-decoration: line-through; color: #666; }
 .item-done .btn-item * { text-decoration: none; color: #666 !important;}
 
 /* Table buttons */
+.table-orders .btn-item 	  { float: right;}
 .table-orders .btn-item a     { text-decoration: none;}
 .table-orders a i 			  { font-size: 2em; line-height: 1em;}
-.table-orders a .icon-spinner { color: #ff9933;}
+.table-orders a .icon-tags,
+.table-orders a .icon-star,
+.table-orders a .icon-spinner 	  { color: #ff9933;}
 .table-orders a .icon-ok 	  { color: #669933;}
-.table-orders a i.ico-done 	  { color: #666;}
+.table-orders a i.ico-done 	  { color: #666; text-decoration: none;}
+.table-orders a:hover 		  { text-decoration: none;}
 .table-orders a i:hover,
 .table-orders a i:active 	  { color: #cc3333;}
 
 .btn-item {
-	background: #fff;
 	display: inline-block;
-	border: .1em solid silver;
 	padding: .2em;
 	margin: 0 0 0 .3em;
 	-webkit-border-radius: 5px;
@@ -65,6 +207,68 @@ header td.t-active:hover a {}
 	border-radius: 5px;
 }
 .table-orders .table-n .btn-item {}
+
+/* Loading, Ajax */
+div.loading {
+	background-color: #efefef;
+	background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.5) 35px, rgba(255,255,255,.5) 70px);
+	text-align: center;
+	padding: .7em;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+div.loading i { font-size: 2em; float: none; color: #666;}
+div.loading span { display: inline-block; font-size: 1.5em;}
+
+/* order history */
+.order-history {}
+.order-history table { width: 100%;}
+.order-history table td { background: none; border: none; border-right: 1px solid silver;}
+.order-history strong { display: block;}
+
+.order-history tr:nth-child(even) {background: #CCC}
+.order-history tr:nth-child(odd) {background: #FFF}
+
+td.order-history-time { width: 20%;}
+td.order-history-name { width: 50%;}
+td.order-history-table { width: 10%;}
+td.order-history-state { }
+
+/* Flash messages */
+.flash-messages {
+	padding: 1em;
+	margin: .5em;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+}
+.flash-messages i {float: left; margin: 0 .3em 0 0; font-size: 3em;}
+.flash-messages .header {display: block;}
+.message-success {border: 1px solid #9cda4b; background: #e6f9ce;}
+.message-error	{border: 1px solid #ed7f7f; background: #ffe5e5;}
+.message-notice	{border: 1px solid #7392d0; background: #dae6ff;}
+
+.message-success .header,
+.message-success i	{color: #61ad00;}
+.message-error .header,
+.message-error i	{color: #dc0000;}
+.message-notice .header,
+.message-notice i	{color: #2c4b8d;}
+
+/* Clear */
+.clearfix:before,
+.clearfix:after      {
+  content: "\0020";    
+  display: block;    
+  height: 0;    
+  overflow: hidden; 
+}
+.clearfix:after      {clear: both;}
+.clearfix             {zoom: 1;}
+
+/* Footer */
+footer { padding: .2em .5em;}
 
 /* Gradients */
 .gra-gray,
@@ -90,4 +294,16 @@ tr:nth-child(odd).gra-brown {
 	background: -ms-linear-gradient(top,  #ffffff 0%,#f3e2c7 100%);
 	background: linear-gradient(to bottom,  #ffffff 0%,#f3e2c7 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f3e2c7',GradientType=0 );
+}
+.paper {
+	background-color: #fff; 
+	background-image: 
+	linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
+	linear-gradient(#eee .1em, transparent .1em);
+	background-size: 100% 1.2em;
+}
+.stripes {
+	background-color: gray;
+	background-image: linear-gradient(transparent 50%, rgba(255,255,255,.5) 50%);
+	background-size: 50px 50px;
 }

@@ -1,6 +1,16 @@
-<h1>{$item->name} {$item->detail} {$item->quantity} {$item->price|currency}</h1>
+{block content}
+<section class="section-box">
+	<nav class="section-menu">
+		<div class="menu-header">
+			<a href=""><i class="icon-circle-arrow-left"></i></a><span><i class="icon-"></i>objednávka</span>
+		</div>
+		<div class="order-form item-detail">
+		<h1>{$item->name} {$item->detail} {$item->quantity} {$item->price|currency}</h1>
 
-{dump $item}
-{dump $extras}
+		{dump $item}
+		{dump $extras}
 
-{control orderForm}
+		{control orderForm}
+		</div>
+	</nav>
+</section>

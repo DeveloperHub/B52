@@ -11,7 +11,6 @@
 	<title>{block title|striptags|upper}{ B52{/block}</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="{$basePath}/css/bootstrap-combined.min.css" rel="stylesheet">
 	<link href="{$basePath}/css/font-awesome.min.css" rel="stylesheet">
 	<link href="{$basePath}/css/screen.css" rel="stylesheet">
 	<link href="{$basePath}/css/paginator.css" rel="stylesheet">
@@ -26,10 +25,8 @@
 
 	{include #content}
 
-	{include @billcounts.latte}
-
 <footer>
-	© { DeveloperHub for Google I/O
+	© { <a href="http://developerhub.cz/" title="DeveloperHub">DeveloperHub</a> for Google I/O
 </footer>
 
 {block scripts}

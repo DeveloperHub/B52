@@ -3,8 +3,7 @@
 	<title>{block title|striptags|upper}{ B52 - Servírka{/block}</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="{$basePath}/css/bootstrap.min.css" rel="stylesheet" media="screen">
-	<link href="{$basePath}/css/bootstrap-combined.min.css" rel="stylesheet">
+	<link href="{$basePath}/css/normalize.min.css" rel="stylesheet">
 	<link href="{$basePath}/css/font-awesome.min.css" rel="stylesheet">
 	<link href="{$basePath}/css/screen-waitress.css" rel="stylesheet">
 	<link href="{$basePath}/css/paginator.css" rel="stylesheet">
@@ -13,9 +12,10 @@
 <header>
 	<table class="gra-gray clean-table">
 		<tr>
-			<td class="t-number"><a href="#" class="logo">{ B52</a></td>
+			<td class="t-number"><i class="icon-beer"></i> B52</td>
 			<td class="t-active"><a n:href="Orders:" title="OBJEDNÁVKY" class="btn-orders"><i class="icon-tasks"></i> OBJEDNÁVKY</a></td>
 			<td><a n:href="History:" title="HISTORIE"  class="btn-history"><i class="icon-reorder"></i> HISTORIE</a></td>
+			<td><a href="" title="NOTIFIKACE" class="btn-notifi"><i class="icon-info-sign"></i> NOTIFIKACE</a></td>
 		</tr>
 	</table>
 </header>
@@ -23,7 +23,7 @@
 {include #content}
 
 <footer>
-	© { DeveloperHub for Google I/O
+	© { <a href="http://developerhub.cz" title="DeveloperHub">DeveloperHub</a> for Google I/O
 </footer>
 
 {block scripts}

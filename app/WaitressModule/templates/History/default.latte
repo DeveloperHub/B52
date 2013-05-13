@@ -1,16 +1,40 @@
 {block content}
+<section class="orders" id="orders">
+	<table class="table-orders clean-table">
+		<tr n:foreach="$orders as $number => $table">
+			<td>
+				<ul n:foreach="$orders as $order" class="order-history">
+					<li>
+						<table>
+							<tr>
+								<td class="order-history-time">
+									<strong>Čas:</strong>
+									{$order->ordered|date:'j. n. Y H:i'}
+								</td>
+								<td class="order-history-name">
+									<strong>Objednávka:</strong>
+									{$order->count}x {$order->item}{if $order->quantity} ({$order->quantity}){/if}
+								</td>
+								<td class="order-history-table">
+									<strong>Stůl:</strong>
+									{$order->number}
+								</td>
+								<td class="order-history-state">
+									<strong>Stav:</strong>
+									{if $order->status == 'wait'}čeká
+									{elseif $order->status == 'in progress'}připravuje se
+									{elseif $order->status == 'done'}hotovo
+									{elseif $order->status == 'cancel'}ke zrušení
+									{elseif $order->status == 'canceled'}zrušeno
+									{/if}
+								</td>
+							</tr>
+						</table>
+					</li>
+				</ul>
 
-<dl n:foreach="$orders as $order">
-	<dt>Čas</dt><dd>{$order->ordered|date:'j. n. Y H:i'}</dd>
-	<dt>Objednávka</dt><dd>{$order->count}x {$order->item}{if $order->quantity} ({$order->quantity}){/if}</dd>
-	<dt>Stůl</dt><dd>{$order->number}</dd>
-	<dt>Stav</dt><dd>
-		{if $order->status == 'wait'}čeká
-		{elseif $order->status == 'in progress'}připravuje se
-		{elseif $order->status == 'done'}hotovo
-		{elseif $order->status == 'cancel'}ke zrušení
-		{elseif $order->status == 'canceled'}zrušeno
-	{/if}</dd>
-</dl>
-
-{control paginator}
+				{control paginator}
+			</td>
+		</tr>
+	</table>
+</section>

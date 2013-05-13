@@ -1,12 +1,22 @@
-<h1>Objednat</h1>
-{var $price = 0}
-<div n:foreach="$orders as $order">
-	{? $price += $order->price}
-	{$order->name}{if $order->quantity} - {$order->quantity}{/if} - {$order->price|currency}
-	<div n:ifset="$order->extras" n:foreach="$order->extras as $extra">
-		{? $price += $extra->price}
-		{$extra->name}{if $extra->quantity} - {$extra->quantity}{/if} - {$extra->price|currency}
-	</div>
-</div>
-<div>Celkem: {$price|currency}</div>
-<a n:href="Send!">Odeslat</a>
+{block content}
+<section class="section-box">
+	<nav class="section-menu">
+		<div class="menu-header">
+			<a href=""><i class="icon-circle-arrow-left"></i></a><span><i class="icon-"></i>objednávka</span>
+		</div>
+		<div class="order-form item-detail">
+			<h1>Shrnutí objednávky</h1>
+			{var $price = 0}
+			<div n:foreach="$orders as $order">
+				{? $price += $order->price}
+				{$order->name}{if $order->quantity} - {$order->quantity}{/if} - {$order->price|currency}
+				<div n:ifset="$order->extras" n:foreach="$order->extras as $extra">
+					{? $price += $extra->price}
+					{$extra->name}{if $extra->quantity} - {$extra->quantity}{/if} - {$extra->price|currency}
+				</div>
+			</div>
+			<div>Celkem: {$price|currency}</div>
+			<a n:href="Send!" class="btn-order" title="Odeslat">Odeslat</a>
+		</div>
+	</nav>
+</section>

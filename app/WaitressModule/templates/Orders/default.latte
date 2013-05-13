@@ -7,32 +7,32 @@
 			</td>
 			<td class="order-drinks">
 				<ul n:ifset="$table['drink']" class="order-items">
-					<li n:foreach="$table['drink'] as $item">
-						[{$item->ordered|date:'H:i'}] {$item->count}x {$item->item}{if $item->quantity} ({$item->quantity}){/if}
-						<strong>{if $item->status == 'wait'}čeká{elseif $item->status == 'in progress'}připravuje se{elseif $item->status == 'cancel'}zrušeno{/if}</strong>
+					<li n:foreach="$table['drink'] as $item" class="clearfix">
                         <span class="btn-item">
                             {var $nextStatus = ($item->status == 'wait' ? 'in progress' : 'done')}
 	                        {if $item->status == 'cancel'}{var $nextStatus = 'canceled'}{/if}
                             <a n:href="ChangeStatus!, $item->id, $nextStatus"><i class="icon-{if $item->status == 'wait'}spinner{elseif $item->status == 'in progress'}ok{elseif $item->status == 'cancel'}minus{/if}"></i></a>
                         </span>
+						{$item->count}x {$item->item}{if $item->quantity} ({$item->quantity}){/if}
+						<strong>{if $item->status == 'wait'}čeká{elseif $item->status == 'in progress'}připravuje se{elseif $item->status == 'cancel'}zrušeno{/if}</strong><br>
+						<small>{$item->ordered|date:'H:i'}</small>
 					</li>
 				</ul>
-			</td>
-			<td class="order-food">
 				<ul n:ifset="$table['food']" class="order-items">
-					<li n:foreach="$table['food'] as $item">
-						[{$item->ordered|date:'H:i'}] {$item->count}x {$item->item}{if $item->quantity} ({$item->quantity}){/if}
-						<small n:if="count($item->extras)">
-							{foreach $item->extras as $extra}
-							{$extra->name}{if $extra->quantity} ({$extra->quantity}){/if}{sep}, {/sep}
-							{/foreach}
-						</small>
-						<strong>{if $item->status == 'wait'}čeká{elseif $item->status == 'in progress'}připravuje se{elseif $item->status == 'cancel'}zrušeno{/if}</strong>
+					<li n:foreach="$table['food'] as $item" class="clearfix">
 	                    <span class="btn-item">
 	                        {var $nextStatus = ($item->status == 'wait' ? 'in progress' : 'done')}
 		                        {if $item->status == 'cancel'}{var $nextStatus = 'canceled'}{/if}
 	                        <a n:href="ChangeStatus!, $item->id, $nextStatus"><i class="icon-{if $item->status == 'wait'}spinner{elseif $item->status == 'in progress'}ok{elseif $item->status == 'cancel'}minus{/if}"></i></a>
 	                    </span>
+						{$item->count}x {$item->item}{if $item->quantity} ({$item->quantity}){/if}
+						<small n:if="count($item->extras)">
+							{foreach $item->extras as $extra}
+							{$extra->name}{if $extra->quantity} ({$extra->quantity}){/if}{sep}, {/sep}
+							{/foreach}
+						</small>
+						<strong>{if $item->status == 'wait'}čeká{elseif $item->status == 'in progress'}připravuje se{elseif $item->status == 'cancel'}zrušeno{/if}</strong><br>
+						<small>{$item->ordered|date:'H:i'}</small>
 					</li>
 				</ul>
 			</td>

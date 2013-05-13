@@ -1,8 +1,12 @@
-<h1>Notifikace</h1>
-<a n:href="Offer:">zavřít</a>
-<ul n:if="count($messages)">
+{block content}
+
+<div class="menu-header notifi-header">
+	<a n:href="Offer:"><i class="icon-circle-arrow-left"></i></a><span><i class="icon-"></i>Notifikace</span>
+</div>
+<ul n:if="count($messages)" class="notifi-list">
 	<li n:foreach="$messages as $message" n:class="$message->unread ? unread">
 		<a n:href="Read! $message->id">
+			<i class="icon-chevron-right"></i>
 			<small>{$message->posted|date: 'd.m. Y H:m'}</small>
 			<strong>{if $message->from == 'waitress'}Z baru vzkazují{elseif $message->from == "system"}Systém říká{/if}:</strong>
 			{$message->message}
