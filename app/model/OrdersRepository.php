@@ -140,4 +140,16 @@ class OrdersRepository extends BaseRepository
 		$query = 'UPDATE %n SET [status]="paid" WHERE [id_clients]=%i AND [status]="done"';
 		$this->db->query($query, $this->table, $id);
 	}
+
+
+	/**
+	 * @param int $interval
+	 *
+	 * @return mixed
+	 */
+	public function getCountNew($interval)
+	{
+		$query = 'SELECT COUNT([id]) FROM %n WHERE [ordered]>DATE_SUB(NOW(), INTERVAL %i second)';
+		return $this->db->query($query, $this->table, $interval)->fetchSingle();
+	}
 }

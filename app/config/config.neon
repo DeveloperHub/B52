@@ -7,9 +7,8 @@
 common:
 	parameters:
 		database:
-			driver: mysql
 			host: localhost
-			database: b52
+			driver: mysql
 			lazy: true
 			profiler: true
 
@@ -47,11 +46,13 @@ common:
 production < common:
 	parameters:
 		database:
-			username:
-			password:
+			database: developerhubcz2
+			username: developerhub.1
+			password: BAlon125
 
 development < common:
 	parameters:
 		database:
+			database: b52
 			username: root
 			password:
