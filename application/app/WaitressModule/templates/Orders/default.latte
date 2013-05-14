@@ -15,7 +15,7 @@
                         </span>
 						{$item->count}x {$item->item}{if $item->quantity} ({$item->quantity}){/if}
 						<strong>{if $item->status == 'wait'}čeká{elseif $item->status == 'in progress'}připravuje se{elseif $item->status == 'cancel'}zrušeno{/if}</strong><br>
-						<small>{$item->ordered|date:'H:i'}</small>
+						<small>objednáno před: <span class="orderedDate" data-ordered="{$item->ordered|date:'D M d Y H:i:s O'}">0:00</span></small>
 					</li>
 				</ul>
 				<ul n:ifset="$table['food']" class="order-items">
@@ -32,7 +32,7 @@
 							{/foreach}
 						</small>
 						<strong>{if $item->status == 'wait'}čeká{elseif $item->status == 'in progress'}připravuje se{elseif $item->status == 'cancel'}zrušeno{/if}</strong><br>
-						<small>{$item->ordered|date:'H:i'}</small>
+						<small>objednáno před: <span class="orderedDate" data-ordered="{$item->ordered|date:'D M d Y H:i:s O'}">0:00</span></small>
 					</li>
 				</ul>
 			</td>
