@@ -5,10 +5,16 @@
 
 namespace ClientModule;
 
+use Nette\DateTime;
+use Nette\Diagnostics\Debugger;
+
 class FlashMessagesPresenter extends BasePresenter
 {
 	/** @var \FlashMessagesRepository */
 	private $flashMessagesRepository;
+
+	/** @var \TablesRepository */
+	private $tableRepository;
 
 
 	protected function startup()
@@ -16,12 +22,65 @@ class FlashMessagesPresenter extends BasePresenter
 		parent::startup();
 
 		$this->flashMessagesRepository = $this->context->flashMessagesRepository;
+		$this->tableRepository = $this->context->tablesRepository;
 	}
 
 
 	public function renderDefault()
 	{
 		$this->template->messages = $this->flashMessagesRepository->findByClient($this->idClient);
+	}
+
+
+	public function actionCallWaitress()
+	{
+		try {
+			$table = $this->tableRepository->findById($this->user->idTable);
+
+			$message = 'Klient ' . $this->user->name . ' vás volá ke stolu ' . (isset($table->name) ? $table->name : $table->number) . '.';
+			$data = array(
+				'posted' => new DateTime,
+				'from' => 'client',
+				'to' => 'waitress',
+				'from_client' => $this->idClient,
+				'id_tables' => $table->id,
+				'message' => $message,
+			);
+			$this->flashMessagesRepository->insert($data);
+
+			$this->flashMessage('Obsluha zavolána.', 'ok');
+		} catch (\DibiDriverException $e) {
+			Debugger::log($e);
+			$this->flashMessage('Nepodařilo se přivolat obsluhu.', 'error');
+		}
+
+		$this->redirect('Offer:default');
+	}
+
+
+	public function actionPay()
+	{
+		try {
+			$table = $this->tableRepository->findById($this->user->idTable);
+
+			$message = 'Klient ' . $this->user->name . ' u stolu ' . (isset($table->name) ? $table->name : $table->number) . ' bude platit.';
+			$data = array(
+				'posted' => new DateTime,
+				'from' => 'client',
+				'to' => 'waitress',
+				'from_client' => $this->idClient,
+				'id_tables' => $table->id,
+				'message' => $message,
+			);
+			$this->flashMessagesRepository->insert($data);
+
+			$this->flashMessage('Informace o placení předána.', 'ok');
+		} catch (\DibiDriverException $e) {
+			Debugger::log($e);
+			$this->flashMessage('Nepodařilo se informovat o placení.', 'error');
+		}
+
+		$this->redirect('Offer:default');
 	}
 
 

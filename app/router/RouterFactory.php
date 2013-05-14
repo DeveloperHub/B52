@@ -22,6 +22,7 @@ class RouterFactory
 		$adminRouter[] = new Route('admin/<presenter>[/<action>][/<id>]', 'Homepage:default');
 
 		$router[] = $waitressRouter = new RouteList('Waitress');
+		$waitressRouter[] = new Route('waitress/<presenter=History>/<action=default>/<id>/<idMessage>');
 		$waitressRouter[] = new Route('waitress/<presenter>[/<action>][/<id>]', 'Orders:default');
 
 		$router[] = $clientRouter = new RouteList('Client');

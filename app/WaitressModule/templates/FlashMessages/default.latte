@@ -1,0 +1,15 @@
+{block content}
+
+<h1>Notifikace</h1>
+
+<ul n:if="messages">
+	<li n:foreach="$messages as $message" n:class="$message->unread ? unread">
+		<small>{$message->posted|date: 'd.m. Y H:m'}</small>
+		{$message->message}
+		{if $message->unread && $message->pay}
+		<a n:href="History:default $message->from_client, $message->id"><i class="icon-money"></i></a>
+		{elseif $message->unread}
+		<a n:href="Read! $message->id"><i class="icon-ok"></i></a>
+		{/if}
+	</li>
+</ul>

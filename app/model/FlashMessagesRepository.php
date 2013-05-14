@@ -35,4 +35,24 @@ class FlashMessagesRepository extends BaseRepository
 		$query = 'SELECT COUNT([id]) FROM %n WHERE [unread] AND [to_client]=%i';
 		return $this->db->query($query, $this->table, $id)->fetchSingle();
 	}
+
+
+	/**
+	 * @return array of DibiRow
+	 */
+	public function findForWaitress()
+	{
+		$query = 'SELECT * FROM %n WHERE [to]="waitress" ORDER BY [posted] DESC';
+		return $this->db->query($query, $this->table)->fetchAll();
+	}
+
+
+	/**
+	 * @return mixed
+	 */
+	public function getCountUnreadForWaitress()
+	{
+		$query = 'SELECT COUNT([id]) FROM %n WHERE [unread] AND [to]="waitress"';
+		return $this->db->query($query, $this->table)->fetchSingle();
+	}
 }

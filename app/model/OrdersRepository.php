@@ -25,10 +25,10 @@ class OrdersRepository extends BaseRepository
 			'LEFT JOIN %n AS [c] ON [o.id_clients]=[c.id] ' .
 			'LEFT JOIN %n AS [i] ON [o.id_items]=[i.id] ' .
 			'LEFT JOIN %n AS [v] ON [o.id_items_variations]=[v.id] ' .
-			'WHERE [status] NOT IN %l ' .
-			'ORDER BY [ordered]'
+			'WHERE [o.status] NOT IN %l ' .
+			'ORDER BY [o.ordered]'
 		;
-		return $this->db->query($query, $this->table, 'tables', 'clients', 'items', 'items_variations', array('in basket', 'done', 'canceled'))->fetchAssoc('id_tables,type,id');
+		return $this->db->query($query, $this->table, 'tables', 'clients', 'items', 'items_variations', array('in basket', 'done', 'canceled', 'paid'))->fetchAssoc('id_tables,type,id');
 	}
 
 
@@ -58,15 +58,18 @@ class OrdersRepository extends BaseRepository
 	public function findForHistory($limit, $offset)
 	{
 		$query =
-			'SELECT [o].*,[t.number],[c.name] AS [client],[i.type],[i.name] AS [item],[i.quantity] ' .
+			'SELECT [o].*,[t.number],[c.name] AS [client],[i.type],[i.name] AS [item], ' .
+			'IFNULL([i.quantity],[v.quantity]) AS [quantity] ' .
 			'FROM %n AS [o] ' .
 			'LEFT JOIN %n AS [t] ON [o.id_tables]=[t.id] ' .
 			'LEFT JOIN %n AS [c] ON [o.id_clients]=[c.id] ' .
 			'LEFT JOIN %n AS [i] ON [o.id_items]=[i.id] ' .
-			'ORDER BY [ordered] DESC' .
+			'LEFT JOIN %n AS [v] ON [o.id_items_variations]=[v.id] ' .
+			'WHERE [o.status]!="in basket" ' .
+			'ORDER BY [o.ordered] DESC' .
 			'%lmt %ofs'
 		;
-		return $this->db->query($query, $this->table, 'tables', 'clients', 'items', $limit, $offset)->fetchAll();
+		return $this->db->query($query, $this->table, 'tables', 'clients', 'items', 'items_variations', $limit, $offset)->fetchAll();
 	}
 
 
@@ -104,5 +107,37 @@ class OrdersRepository extends BaseRepository
 		);
 		$query = 'UPDATE %n SET %a WHERE %and';
 		$this->db->query($query, $this->table, $data, $where);
+	}
+
+
+	/**
+	 * @param int $idClient
+	 *
+	 * @return array of DibiRow
+	 */
+	public function findBill($idClient)
+	{
+		$query =
+				'SELECT [o].*,[t.number],[c.name] AS [client],[i.type],[i.name] AS [item], ' .
+				'IFNULL([i.quantity],[v.quantity]) AS [quantity] ' .
+				'FROM %n AS [o] ' .
+				'LEFT JOIN %n AS [t] ON [o.id_tables]=[t.id] ' .
+				'LEFT JOIN %n AS [c] ON [o.id_clients]=[c.id] ' .
+				'LEFT JOIN %n AS [i] ON [o.id_items]=[i.id] ' .
+				'LEFT JOIN %n AS [v] ON [o.id_items_variations]=[v.id] ' .
+				'WHERE [o.id_clients]=%i AND [o.status]="done" ' .
+				'ORDER BY [ordered] DESC'
+		;
+		return $this->db->query($query, $this->table, 'tables', 'clients', 'items', 'items_variations', $idClient)->fetchAll();
+	}
+
+
+	/**
+	 * @param int $id
+	 */
+	public function paid($id)
+	{
+		$query = 'UPDATE %n SET [status]="paid" WHERE [id_clients]=%i AND [status]="done"';
+		$this->db->query($query, $this->table, $id);
 	}
 }

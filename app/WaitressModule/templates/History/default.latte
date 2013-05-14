@@ -1,7 +1,7 @@
 {block content}
 <section class="orders" id="orders">
 	<table class="table-orders clean-table">
-		<tr n:foreach="$orders as $number => $table">
+		<tr>
 			<td>
 				<ul n:foreach="$orders as $order" class="order-history">
 					<li>
@@ -26,6 +26,7 @@
 									{elseif $order->status == 'done'}hotovo
 									{elseif $order->status == 'cancel'}ke zrušení
 									{elseif $order->status == 'canceled'}zrušeno
+									{elseif $order->status == 'paid'}zaplaceno
 									{/if}
 								</td>
 							</tr>
@@ -33,7 +34,11 @@
 					</li>
 				</ul>
 
-				{control paginator}
+				{ifset $idClient}
+					<a n:href="Pay! $idClient, $idMessage">zaplatit</a>
+				{else}
+					{control paginator}
+				{/ifset}
 			</td>
 		</tr>
 	</table>

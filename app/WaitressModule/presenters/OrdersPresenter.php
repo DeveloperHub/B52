@@ -53,7 +53,7 @@ class OrdersPresenter extends BasePresenter
 		$order = $this->ordersRepository->findWithItemById($id);
 
 		$message =
-			($status == 'in progress' ? 'Připravují' : ($status == 'done' ? 'Nesou' : 'Zrušili')) .
+			($status == 'in progress' ? 'Připravujeme' : ($status == 'done' ? 'Neseme' : 'Rušíme')) .
 			' objednávku: ' . $order->count . 'x ' . $order->name
 		;
 		$insert = array(
