@@ -13,9 +13,9 @@
 	<table class="gra-gray clean-table">
 		<tr>
 			<td class="t-number"><i class="icon-beer"></i> B52</td>
-			<td class="t-active"><a n:href="Orders:" title="OBJEDNÁVKY" class="btn-orders"><i class="icon-tasks"></i> OBJEDNÁVKY</a></td>
-			<td><a n:href="History:" title="HISTORIE"  class="btn-history"><i class="icon-reorder"></i> HISTORIE</a></td>
-			<td><a n:href="FlashMessages:" title="NOTIFIKACE" class="btn-notifi"><span class="icon">{$countMessages}</span> UPOZORNĚNÍ</a></td>
+			<td n:class="$presenter->isLinkCurrent('Orders:') ? active"><a n:href="Orders:" title="OBJEDNÁVKY" class="btn-orders"><i class="icon-tasks"></i> OBJEDNÁVKY</a></td>
+			<td n:class="$presenter->isLinkCurrent('History:') ? active"><a n:href="History:" title="HISTORIE"  class="btn-history"><i class="icon-reorder"></i> HISTORIE</a></td>
+			<td n:class="$presenter->isLinkCurrent('FlashMessages:') ? active"><a n:href="FlashMessages:" title="NOTIFIKACE" class="btn-notifi"><span class="icon">{$countMessages}</span> UPOZORNĚNÍ</a></td>
 		</tr>
 	</table>
 </header>
