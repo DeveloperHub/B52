@@ -32,8 +32,32 @@
 {block scripts}
 <script src="{$basePath}/js/jquery.js"></script>
 <script src="{$basePath}/js/netteForms.js"></script>
-<script src="{$basePath}/js/main.js"></script>
 <script src="{$basePath}/js/bootstrap.min.js"></script>
+<script>
+	var serverPath = 'http://' + document.domain + '/api';
+
+	// setting the reload interval [ms]
+	var intervalReload = 5000;
+
+	$(function() {
+		/**
+		 * Checks for changes to the customer, url returns the number of new events.
+		 */
+		$('#flashClientInfo').bind('refreshClient', function() {
+			$.getJSON(serverPath + '/api/notifications-client?id={$idClient}', function(data) {
+				if (data) {
+					$('#flashClientInfo').html(data.countMessages);
+				}
+			});
+			return false;
+		});
+
+		// renewable client requirements
+		setInterval(function() {
+			$('#flashClientInfo').trigger('refreshClient');
+		}, intervalReload);
+	});
+</script>
 {/block}
 </body>
 </html>

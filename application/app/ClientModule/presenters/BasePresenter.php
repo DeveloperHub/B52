@@ -41,6 +41,7 @@ abstract class BasePresenter extends \BasePresenter
 		parent::beforeRender();
 
 		$this->template->countMessages = $this->flashMessagesRepository->getCountUnreadForClient($this->idClient);
+		$this->template->idClient = $this->idClient;
 	}
 
 

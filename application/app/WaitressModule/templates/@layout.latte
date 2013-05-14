@@ -3,7 +3,6 @@
 	<title>{block title|striptags|upper}{ B52 - Servírka{/block}</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="{$basePath}/css/normalize.min.css" rel="stylesheet">
 	<link href="{$basePath}/css/font-awesome.min.css" rel="stylesheet">
 	<link href="{$basePath}/css/screen-waitress.css" rel="stylesheet">
 	<link href="{$basePath}/css/paginator.css" rel="stylesheet">
@@ -15,7 +14,7 @@
 			<td class="t-number"><i class="icon-beer"></i> B52</td>
 			<td n:class="$presenter->isLinkCurrent('Orders:') ? active"><a n:href="Orders:" title="OBJEDNÁVKY" class="btn-orders"><i class="icon-tasks"></i> OBJEDNÁVKY</a></td>
 			<td n:class="$presenter->isLinkCurrent('History:') ? active"><a n:href="History:" title="HISTORIE"  class="btn-history"><i class="icon-reorder"></i> HISTORIE</a></td>
-			<td n:class="$presenter->isLinkCurrent('FlashMessages:') ? active"><a n:href="FlashMessages:" title="NOTIFIKACE" class="btn-notifi"><span class="icon">{$countMessages}</span> UPOZORNĚNÍ</a></td>
+			<td n:class="$presenter->isLinkCurrent('FlashMessages:') ? active"><a n:href="FlashMessages:" title="NOTIFIKACE" class="btn-notifi"><span id="flashWaitressInfo" class="icon">{$countMessages}</span> UPOZORNĚNÍ</a></td>
 		</tr>
 	</table>
 </header>
@@ -29,8 +28,77 @@
 {block scripts}
 <script src="{$basePath}/js/jquery.js"></script>
 <script src="{$basePath}/js/netteForms.js"></script>
-<script src="{$basePath}/js/main.js"></script>
 <script src="{$basePath}/js/bootstrap.min.js"></script>
+<script>
+	var serverPath = 'http://' + document.domain + '/api';
+
+	// setting the reload interval [ms]
+	var intervalReload = 5000;
+
+	$(function() {
+		/**
+		 * Checks for changes to the waitress, url must return true or false.
+		 */
+		function waitressCheck() {
+			$.getJSON(serverPath + '/api/is-new-orders?interval=' + intervalReload, function(data) {
+				if (data.isNewOrders) {
+					window.location.reload();
+				}
+			});
+
+		}
+
+		/**
+		 * Checks for changes to the waitress, url returns the number of new events.
+		 */
+		$('#flashWaitressInfo').bind('refreshRequests', function() {
+			$.getJSON(serverPath + '/api/notifications-waitress', function(data) {
+				if (data) {
+					$('#flashWaitressInfo').html(data.countMessages);
+				}
+			});
+
+			return false;
+		});
+
+		function DateDiff(date1, date2) {
+			return date1.getTime() - date2.getTime();
+		}
+
+		function Pad(number, width) {
+			number = number + '';
+			return number.length >= width ? number : new Array(width - number.length + 1).join('0') + number;
+		}
+
+		function recountWaitingTime() {
+			$('.orderedDate').each(function(index) {
+				//akt cas - uvedeny cas = pocet sekund a minut
+				var currentTime = new Date();
+
+				var fromDate = new Date($(this).data('ordered'));
+
+				var secondsFromOrder = (DateDiff(currentTime, fromDate)) / 1000;
+
+				var minutes = Math.floor(secondsFromOrder / 60, 1);
+				var modulo = secondsFromOrder % 60;
+				var seconds = Math.round(secondsFromOrder - (minutes * 60));
+
+				$(this).text(minutes + ':' + Pad(seconds, 2));
+			});
+		}
+
+		if (1) {
+			setInterval(function() {
+				recountWaitingTime()
+			}, 1000);
+
+			setInterval(function() {
+				waitressCheck();
+				$('#flashWaitressInfo').trigger('refreshRequests');
+			}, intervalReload);
+		}
+	});
+</script>
 {/block}
 </body>
 </html>

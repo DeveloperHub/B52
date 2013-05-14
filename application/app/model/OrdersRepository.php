@@ -149,7 +149,7 @@ class OrdersRepository extends BaseRepository
 	 */
 	public function getCountNew($interval)
 	{
-		$query = 'SELECT COUNT([id]) FROM %n WHERE [ordered]>DATE_SUB(NOW(), INTERVAL %i second)';
+		$query = 'SELECT COUNT([id]) FROM %n WHERE [ordered]>NOW() - INTERVAL %i SECOND';
 		return $this->db->query($query, $this->table, $interval)->fetchSingle();
 	}
 }

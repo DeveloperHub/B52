@@ -45,7 +45,7 @@ class ApiPresenter extends \BasePresenter
 
 	public function actionIsNewOrders()
 	{
-		$interval = $this->request->getQuery('interval');
+		$interval = $this->request->getQuery('interval') / 1000 * 2;
 		$countNew = $this->ordersRepository->getCountNew($interval);
 		$this->sendResponse(new JsonResponse(array('isNewOrders' => (bool)$countNew)));
 	}
