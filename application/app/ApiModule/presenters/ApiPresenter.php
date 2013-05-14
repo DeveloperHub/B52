@@ -3,17 +3,19 @@
  * Class ApiPresenter
  */
 
-use Nette\Application\Responses\JsonResponse;
+namespace ApiModule;
 
-class ApiPresenter extends BasePresenter
+use \Nette\Application\Responses\JsonResponse;
+
+class ApiPresenter extends \BasePresenter
 {
-	/** @var Nette\Http\Request */
+	/** @var \Nette\Http\Request */
 	private $request;
 
-	/** @var FlashMessagesRepository */
+	/** @var \FlashMessagesRepository */
 	private $flashMessagesRepository;
 
-	/** @var OrdersRepository */
+	/** @var \OrdersRepository */
 	private $ordersRepository;
 
 
@@ -31,14 +33,12 @@ class ApiPresenter extends BasePresenter
 	{
 		$id = $this->request->getQuery('id');
 		$count = $this->flashMessagesRepository->getCountUnreadForClient($id);
-		$count = rand(0, 10); // only for development
 		$this->sendResponse(new JsonResponse(array('countMessages' => $count)));
 	}
 
 	public function actionNotificationsWaitress()
 	{
 		$count = $this->flashMessagesRepository->getCountUnreadForWaitress();
-		$count = rand(0, 10); //only for development
 		$this->sendResponse(new JsonResponse(array('countMessages' => $count)));
 	}
 
@@ -47,7 +47,6 @@ class ApiPresenter extends BasePresenter
 	{
 		$interval = $this->request->getQuery('interval');
 		$countNew = $this->ordersRepository->getCountNew($interval);
-		$countNew = rand(0,1);
 		$this->sendResponse(new JsonResponse(array('isNewOrders' => (bool)$countNew)));
 	}
 }

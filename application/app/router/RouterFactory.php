@@ -18,8 +18,8 @@ class RouterFactory
 	{
 		$router = new RouteList();
 
-		$router[] = $apiRouter = new RouteList();
-		$apiRouter[] = new Route('<presenter=Api>/<action>');
+		$router[] = $apiRouter = new RouteList('Api');
+		$apiRouter[] = new Route('api/<presenter=Api>/<action>');
 
 		$router[] = $adminRouter = new RouteList('Admin');
 		$adminRouter[] = new Route('admin/<presenter>[/<action>][/<id>]', 'Homepage:default');
