@@ -21,7 +21,7 @@
 	{include @header.latte}
 </header>
 
-	<div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
+	<div n:foreach="$flashes as $flash" class="flash-messages message-{$flash->type} clearfix">{$flash->message}</div>
 
 	{include #content}
 

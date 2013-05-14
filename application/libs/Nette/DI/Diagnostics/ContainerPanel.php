@@ -86,7 +86,7 @@ class ContainerPanel extends Nette\Object implements Nette\Diagnostics\IBarPanel
 	private function getContainerProperty($name)
 	{
 		$prop = Nette\Reflection\ClassType::from('Nette\DI\Container')->getProperty($name);
-		$prop->setAccessible(TRUE);
+		$prop->setAccessible(true);
 		return $prop->getValue($this->container);
 	}
 

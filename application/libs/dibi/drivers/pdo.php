@@ -37,7 +37,7 @@ class DibiPdoDriver extends DibiObject implements IDibiDriver, IDibiResultDriver
 	private $resultSet;
 
 	/** @var int|FALSE  Affected rows */
-	private $affectedRows = FALSE;
+	private $affectedRows = false;
 
 	/** @var string */
 	private $driverName;
@@ -92,7 +92,7 @@ class DibiPdoDriver extends DibiObject implements IDibiDriver, IDibiResultDriver
 	 */
 	public function disconnect()
 	{
-		$this->connection = NULL;
+		$this->connection = null;
 	}
 
 
@@ -108,12 +108,12 @@ class DibiPdoDriver extends DibiObject implements IDibiDriver, IDibiResultDriver
 		// must detect if SQL returns result set or num of affected rows
 		$cmd = strtoupper(substr(ltrim($sql), 0, 6));
 		static $list = array('UPDATE'=>1, 'DELETE'=>1, 'INSERT'=>1, 'REPLAC'=>1);
-		$this->affectedRows = FALSE;
+		$this->affectedRows = false;
 
 		if (isset($list[$cmd])) {
 			$this->affectedRows = $this->connection->exec($sql);
 
-			if ($this->affectedRows === FALSE) {
+			if ($this->affectedRows === false) {
 				$err = $this->connection->errorInfo();
 				throw new DibiDriverException("SQLSTATE[$err[0]]: $err[2]", $err[1], $sql);
 			}
@@ -121,7 +121,7 @@ class DibiPdoDriver extends DibiObject implements IDibiDriver, IDibiResultDriver
 		} else {
 			$res = $this->connection->query($sql);
 
-			if ($res === FALSE) {
+			if ($res === false) {
 				$err = $this->connection->errorInfo();
 				throw new DibiDriverException("SQLSTATE[$err[0]]: $err[2]", $err[1], $sql);
 			} else {
@@ -160,7 +160,7 @@ class DibiPdoDriver extends DibiObject implements IDibiDriver, IDibiResultDriver
 	 * @return void
 	 * @throws DibiDriverException
 	 */
-	public function begin($savepoint = NULL)
+	public function begin($savepoint = null)
 	{
 		if (!$this->connection->beginTransaction()) {
 			$err = $this->connection->errorInfo();
@@ -176,7 +176,7 @@ class DibiPdoDriver extends DibiObject implements IDibiDriver, IDibiResultDriver
 	 * @return void
 	 * @throws DibiDriverException
 	 */
-	public function commit($savepoint = NULL)
+	public function commit($savepoint = null)
 	{
 		if (!$this->connection->commit()) {
 			$err = $this->connection->errorInfo();
@@ -192,7 +192,7 @@ class DibiPdoDriver extends DibiObject implements IDibiDriver, IDibiResultDriver
 	 * @return void
 	 * @throws DibiDriverException
 	 */
-	public function rollback($savepoint = NULL)
+	public function rollback($savepoint = null)
 	{
 		if (!$this->connection->rollBack()) {
 			$err = $this->connection->errorInfo();
@@ -430,7 +430,7 @@ class DibiPdoDriver extends DibiObject implements IDibiDriver, IDibiResultDriver
 	 */
 	public function free()
 	{
-		$this->resultSet = NULL;
+		$this->resultSet = null;
 	}
 
 
@@ -446,12 +446,12 @@ class DibiPdoDriver extends DibiObject implements IDibiDriver, IDibiResultDriver
 		$columns = array();
 		for ($i = 0; $i < $count; $i++) {
 			$row = @$this->resultSet->getColumnMeta($i); // intentionally @
-			if ($row === FALSE) {
+			if ($row === false) {
 				throw new DibiNotSupportedException('Driver does not support meta data.');
 			}
 			// PHP < 5.2.3 compatibility
 			// @see: http://php.net/manual/en/pdostatement.getcolumnmeta.php#pdostatement.getcolumnmeta.changelog
-			$row['table'] = isset($row['table']) ? $row['table'] : NULL;
+			$row['table'] = isset($row['table']) ? $row['table'] : null;
 
 			$columns[] = array(
 				'name' => $row['name'],

@@ -15,7 +15,7 @@
  * Check and reset PHP configuration.
  */
 error_reporting(E_ALL | E_STRICT);
-@set_magic_quotes_runtime(FALSE); // @ - deprecated since PHP 5.3.0
+@set_magic_quotes_runtime(false); // @ - deprecated since PHP 5.3.0
 iconv_set_encoding('internal_encoding', 'UTF-8');
 extension_loaded('mbstring') && mb_internal_encoding('UTF-8');
 umask(0);
@@ -27,7 +27,7 @@ umask(0);
 /**
  * Load and configure Nette Framework.
  */
-define('NETTE', TRUE);
+define('NETTE', true);
 define('NETTE_DIR', __DIR__);
 define('NETTE_VERSION_ID', 20010); // v2.0.10
 define('NETTE_PACKAGE', '5.3');
@@ -58,7 +58,7 @@ Nette\Utils\SafeStream::register();
  * @param  string  method
  * @return Nette\Callback
  */
-function callback($callback, $m = NULL)
+function callback($callback, $m = null)
 {
 	return new Nette\Callback($callback, $m);
 }

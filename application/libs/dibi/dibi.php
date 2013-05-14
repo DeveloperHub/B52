@@ -17,7 +17,7 @@ if (version_compare(PHP_VERSION, '5.2.0', '<')) {
 	throw new Exception('dibi needs PHP 5.2.0 or newer.');
 }
 
-@set_magic_quotes_runtime(FALSE); // intentionally @
+@set_magic_quotes_runtime(false); // intentionally @
 
 
 
@@ -158,7 +158,7 @@ class dibi
 	 */
 	public static function isConnected()
 	{
-		return (self::$connection !== NULL) && self::$connection->isConnected();
+		return (self::$connection !== null) && self::$connection->isConnected();
 	}
 
 
@@ -169,10 +169,10 @@ class dibi
 	 * @return DibiConnection
 	 * @throws DibiException
 	 */
-	public static function getConnection($name = NULL)
+	public static function getConnection($name = null)
 	{
-		if ($name === NULL) {
-			if (self::$connection === NULL) {
+		if ($name === null) {
+			if (self::$connection === null) {
 				throw new DibiException('Dibi is not connected to database.');
 			}
 
@@ -357,7 +357,7 @@ class dibi
 	 * @return int
 	 * @throws DibiException
 	 */
-	public static function getInsertId($sequence=NULL)
+	public static function getInsertId($sequence=null)
 	{
 		return self::getConnection()->getInsertId($sequence);
 	}
@@ -370,7 +370,7 @@ class dibi
 	 * @return int
 	 * @throws DibiException
 	 */
-	public static function insertId($sequence=NULL)
+	public static function insertId($sequence=null)
 	{
 		return self::getConnection()->getInsertId($sequence);
 	}
@@ -383,7 +383,7 @@ class dibi
 	 * @return void
 	 * @throws DibiException
 	 */
-	public static function begin($savepoint = NULL)
+	public static function begin($savepoint = null)
 	{
 		self::getConnection()->begin($savepoint);
 	}
@@ -396,7 +396,7 @@ class dibi
 	 * @return void
 	 * @throws DibiException
 	 */
-	public static function commit($savepoint = NULL)
+	public static function commit($savepoint = null)
 	{
 		self::getConnection()->commit($savepoint);
 	}
@@ -409,7 +409,7 @@ class dibi
 	 * @return void
 	 * @throws DibiException
 	 */
-	public static function rollback($savepoint = NULL)
+	public static function rollback($savepoint = null)
 	{
 		self::getConnection()->rollback($savepoint);
 	}
@@ -520,7 +520,7 @@ class dibi
 	/**
 	 * @return DibiDateTime
 	 */
-	public static function datetime($time = NULL)
+	public static function datetime($time = null)
 	{
 		trigger_error(__METHOD__ . '() is deprecated; create DibiDateTime object instead.', E_USER_WARNING);
 		return new DibiDateTime($time);
@@ -531,7 +531,7 @@ class dibi
 	/**
 	 * @deprecated
 	 */
-	public static function date($date = NULL)
+	public static function date($date = null)
 	{
 		trigger_error(__METHOD__ . '() is deprecated; create DibiDateTime object instead.', E_USER_WARNING);
 		return new DibiDateTime($date);
@@ -568,7 +568,7 @@ class dibi
 	{
 		trigger_error(__METHOD__ . '() is deprecated; use unset(dibi::getSubstitutes()->expr) instead.', E_USER_WARNING);
 		$substitutes = self::getSubstitutes();
-		if ($expr === TRUE) {
+		if ($expr === true) {
 			foreach ($substitutes as $expr => $foo) {
 				unset($substitutes->$expr);
 			}
@@ -598,14 +598,14 @@ class dibi
 	 * @param  bool  return output instead of printing it?
 	 * @return string
 	 */
-	public static function dump($sql = NULL, $return = FALSE)
+	public static function dump($sql = null, $return = false)
 	{
 		ob_start();
 		if ($sql instanceof DibiResult) {
 			$sql->dump();
 
 		} else {
-			if ($sql === NULL) $sql = self::$sql;
+			if ($sql === null) $sql = self::$sql;
 
 			static $keywords1 = 'SELECT|(?:ON\s+DUPLICATE\s+KEY)?UPDATE|INSERT(?:\s+INTO)?|REPLACE(?:\s+INTO)?|DELETE|CALL|UNION|FROM|WHERE|HAVING|GROUP\s+BY|ORDER\s+BY|LIMIT|OFFSET|SET|VALUES|LEFT\s+JOIN|INNER\s+JOIN|TRUNCATE';
 			static $keywords2 = 'ALL|DISTINCT|DISTINCTROW|IGNORE|AS|USING|ON|AND|OR|IN|IS|NOT|NULL|LIKE|RLIKE|REGEXP|TRUE|FALSE';
