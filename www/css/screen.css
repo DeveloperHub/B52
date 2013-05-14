@@ -180,15 +180,17 @@ a.btn-order:hover {background: #d00206; color: #fff;}
 a.btn-order:hover i {}
 
 /* Notification */
-.notifi-header { background: #b3d4fc;}
+.notifi-header { }
 
 .notifi-list { margin: 0; padding: 0; list-style-type: none;}
-.notifi-list a { display: block; padding: 1em; text-decoration: none; color: #666; line-height: 1em;}
-.notifi-list li { border-bottom: 1px solid silver;}
+.notifi-list a,
+.notifi-list .anchor { display: block; padding: 1em; text-decoration: none; color: #666; line-height: 1em;}
+.notifi-list li { border-bottom: 1px solid silver; }
 .notifi-list li:hover { background: #f3e2c7;}
 .notifi-list small { text-decoration: none;  display: block; font-size: .8em; line-height: .8em;}
 .notifi-list strong { color: #339900;}
 .notifi-list i {color: #B58641; float: right; margin: 0 .5em 0 0;}
+.notifi-list .unread { background: #b3d4fc;}
 
 /* Bill lines */
 .account-lines { display: table; margin: 1em 0 1em 0;}

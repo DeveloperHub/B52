@@ -35,7 +35,7 @@
 				</ul>
 
 				{ifset $idClient}
-					<a n:href="Pay! $idClient, $idMessage">zaplatit</a>
+					<a n:href="Pay! $idClient, $idMessage" class="btn-order"><i class="icon-money"></i>zaplatit</a>
 				{else}
 					{control paginator}
 				{/ifset}

@@ -1,5 +1,9 @@
 {block content}
-
-<a n:href="Orders:basket">Objednávky</a>
-<a n:href="FlashMessages:callWaitress">Přivolat obsluhu</a>
-<a n:href="FlashMessages:pay">Zaplatit</a>
+<div class="menu-header notifi-header">
+	<a href="{$basePath}"><i class="icon-circle-arrow-left"></i></a><span><i class="icon-"></i>Menu</span>
+</div>
+<ul class="notifi-list">
+	<li><a n:href="Orders:basket"><i class="icon-th-list"></i> Objednávky</a></li>
+	<li><a n:href="FlashMessages:callWaitress"><i class="icon-bullhorn"></i> Přivolat obsluhu</a></li>
+	<li><a n:href="FlashMessages:pay"><i class="icon-money"></i> Zaplatit</a></li>
+</ul>

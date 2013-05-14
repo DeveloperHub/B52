@@ -114,6 +114,7 @@ header a.logo:hover i { color: #339933; text-decoration: none;}
 /* Menu */
 header a 			{ display: block; font-size: 1.3em; line-height: 1.5em; text-decoration: none;}
 header i 			{ text-decoration: none; float: left; font-size: 1.5em; margin: 0 .3em 0 0; color: #666;}
+header .icon 		{ float: left; background: #666; color: #fff; width: 1.5em; text-align: center; margin: 0 .3em 0 0; -webkit-border-radius: 50%; -moz-border-radius: 50%; border-radius: 50%;}
 header td 			{ }
 header .btn-orders  { color: #cc0000;}
 header .btn-history { color: #339933;}
@@ -208,6 +209,23 @@ header a:hover i		{ color: #339933 !important;}
 }
 .table-orders .table-n .btn-item {}
 
+a.btn-order { 
+	display: block;
+	background: #B58641;
+	color: #fff;
+	text-decoration: none;
+	font-size: 1.4em;
+	padding: .4em;
+	margin: .4em 0;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+a.btn-order small { display: block; font-size: .7em; font-style: italic;}
+a.btn-order i { color: #fff; margin: 0 .2em; font-size: 1.5em;}
+a.btn-order:hover {background: #d00206; color: #fff;}
+a.btn-order:hover i {}
+
 /* Loading, Ajax */
 div.loading {
 	background-color: #efefef;
@@ -234,6 +252,10 @@ td.order-history-time { width: 20%;}
 td.order-history-name { width: 50%;}
 td.order-history-table { width: 10%;}
 td.order-history-state { }
+
+/* Notifications */
+.notifications li { text-decoration: line-through;}
+.notifications li.unread { text-decoration: none;}
 
 /* Flash messages */
 .flash-messages {

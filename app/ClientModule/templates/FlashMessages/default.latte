@@ -5,11 +5,11 @@
 </div>
 <ul n:if="count($messages)" class="notifi-list">
 	<li n:foreach="$messages as $message" n:class="$message->unread ? unread">
-		<a n:href="Read! $message->id">
-			<i class="icon-chevron-right"></i>
+		<span class="anchor">
+			<i class="icon-ok"></i>
 			<small>{$message->posted|date: 'd.m. Y H:m'}</small>
 			<strong>{if $message->from == 'waitress'}Z baru vzkazují{elseif $message->from == "system"}Systém říká{/if}:</strong>
 			{$message->message}
-		</a>
+		</span>
 	</li>
 </ul>
