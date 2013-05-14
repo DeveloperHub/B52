@@ -46,12 +46,9 @@ common:
 production < common:
 	parameters:
 		database:
-			#database: developerhubcz2
-			#username: developerhub.1
-			#password: BAlon125
-			database: b52
-			username: root
-			password:
+			database: developerhubcz2
+			username: developerhub.1
+			password: BAlon125
 
 development < common:
 	parameters:
