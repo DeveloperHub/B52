@@ -33,8 +33,10 @@ class OrdersPresenter extends BasePresenter
 	{
 		$tables = $this->ordersRepository->findForWaitress();
 		foreach ($tables as &$table) {
-			foreach ($table['food'] as &$food) {
-				$food->extras = $this->extrasRepository->findByIds($food->extras_items);
+			if (isset($table['food'])) {
+				foreach ($table['food'] as &$food) {
+					$food->extras = $this->extrasRepository->findByIds($food->extras_items);
+				}
 			}
 		}
 		$this->template->tables = $tables;
