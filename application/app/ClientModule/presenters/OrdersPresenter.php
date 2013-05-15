@@ -132,6 +132,8 @@ class OrdersPresenter extends BasePresenter
 			->setDefaultValue($this->user->idTable)
 			->addRule(Form::IS_IN, 'Stůl musí být z výběru.', array_keys($options));
 
+		$form->addTextArea('note', 'Poznámka');
+
 		$form->addSubmit('send', 'Objednat');
 
 		$form->onSuccess[] = callback($this, 'orderFormSuccess');
@@ -155,6 +157,7 @@ class OrdersPresenter extends BasePresenter
 			'id_clients' => $this->idClient,
 			'ordered' => new DateTime(),
 			'count' => $values->count,
+			'note' => $values->note,
 		);
 
 		if (isset($values->variation)) {
