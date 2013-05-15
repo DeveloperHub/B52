@@ -8,6 +8,7 @@ namespace ClientModule;
 use Nette\Application\UI\Form;
 use Nette\Callback;
 use Nette\DateTime;
+use Nette\Diagnostics\Debugger;
 use Nette\Utils\Strings;
 
 class OrdersPresenter extends BasePresenter
@@ -50,6 +51,14 @@ class OrdersPresenter extends BasePresenter
 	}
 
 
+	protected function beforeRender()
+	{
+		parent::beforeRender();
+
+		$this->template->orderStatus = $this->orderStatus;
+	}
+
+
 	/**
 	 * @param $id
 	 * @param null $idVariation
@@ -84,6 +93,34 @@ class OrdersPresenter extends BasePresenter
 			$order->extras = $this->extrasRepository->findByIds($order->extras_items);
 		}
 		$this->template->orders = $orders;
+	}
+
+
+	/**
+	 * @param $id
+	 */
+	public function handleCancel($id)
+	{
+		$where = array(
+			'id' => $id,
+			'id_clients' => $this->idClient,
+			'status' => 'wait',
+		);
+		$checkup = $this->ordersRepository->findBy($where);
+		$checkup = (bool)count($checkup);
+		if (!$checkup) {
+			$this->flashMessage('Tuto objednávku nemůžete zrušit.', 'error');
+			$this->redirect('this');
+		}
+
+		try {
+			$this->ordersRepository->delete($id);
+			$this->flashMessage('Objednávka zrušena.', 'ok');
+		} catch (\DibiDriverException $e) {
+			Debugger::log($e, 'error');
+			$this->flashMessage('Objednávku se nepodařilo zrušit.', 'error');
+		}
+		$this->redirect('this');
 	}
 
 

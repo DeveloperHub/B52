@@ -5,11 +5,22 @@
  */
 abstract class BasePresenter extends Nette\Application\UI\Presenter
 {
+	/** @var array */
+	protected $orderStatus;
+
+
 	protected function startup()
 	{
 		parent::startup();
 
 		$this->template->registerHelperLoader('Helpers::loader');
+
+		$this->orderStatus = array(
+			'wait' => 'čeká',
+			'in progress' => 'v přípravě',
+			'done' => 'hotovo',
+			'paid' => 'zaplaceno',
+		);
 	}
 
 

@@ -105,7 +105,7 @@ class OrdersRepository extends BaseRepository
 			'FROM %n AS [o] ' .
 			'LEFT JOIN %n AS [i] ON [i.id]=[o.id_items] ' .
 			'LEFT JOIN %n AS [v] ON [v.id]=[o.id_items_variations] ' .
-			'WHERE [id_clients]=%i'
+			'WHERE [o.id_clients]=%i AND [o.status]!="paid"'
 		;
 		return $this->db->query($query, $this->table, 'items', 'items_variations', $idClient)->fetchAll();
 	}

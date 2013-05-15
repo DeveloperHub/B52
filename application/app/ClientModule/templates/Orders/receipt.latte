@@ -10,8 +10,12 @@
 			<div n:foreach="$orders as $order">
 				{? $price += $order->price}
 				{$order->name}{if $order->quantity} - {$order->quantity}{/if} - {$order->price|currency}
-				<div n:ifset="$order->extras" n:foreach="$order->extras as $extra">
-					{$extra->name}{if $extra->quantity} - {$extra->quantity}{/if}
+				<strong>{$orderStatus[$order->status]}</strong>
+				<a n:if="$order->status == 'wait'" n:href="Cancel! $order->id">zrušit</a>
+				<div n:if="count($order->extras)">
+					<small n:inner-foreach="$order->extras as $extra">
+						{$extra->name}{if $extra->quantity} - {$extra->quantity}{/if}{sep}, {/sep}
+					</small>
 				</div>
 			</div>
 			<div><strong>Celkem: {$price|currency}</strong></div>
