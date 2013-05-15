@@ -17,6 +17,49 @@ CREATE TABLE `categories` (
   CONSTRAINT `categories_ibfk_2` FOREIGN KEY (`id_categories`) REFERENCES `categories` (`id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
+INSERT INTO `categories` (`id`, `id_categories`, `name`, `detail`, `icon`, `active`) VALUES
+(1,	NULL,	'Jídla',	'',	'food',	1),
+(2,	NULL,	'Nápoje',	'',	'glass',	1),
+(3,	NULL,	'Dezerty',	'',	'coffee',	1),
+(4,	1,	'Snídaně',	'od: 9:00 - 11:00',	'',	1),
+(5,	1,	'Sendviče',	'Vyberte toust anebo celozrnnou bagetku s náplní dle výběru',	'',	1),
+(6,	1,	'Polévky',	'',	'',	1),
+(7,	1,	'Saláty',	'Podáváme s bílým a celozrnným pečivem',	'',	1),
+(8,	1,	'Burgry',	'',	'',	1),
+(9,	1,	'Steaky',	'250 g',	'',	1),
+(10,	1,	'Na kosti',	'Podáváme s bílým a celozrnným pečivem',	'',	1),
+(11,	1,	'Party Meals',	'',	'',	1),
+(12,	3,	'Moučníky a dezerty',	'dle denní nabídky',	'',	1),
+(13,	2,	'Nealkoholické nápoje',	'',	'',	1),
+(14,	2,	'Teplé nápoje',	'',	'',	1),
+(15,	2,	'Pivo',	'',	'',	1),
+(16,	2,	'Aperitif',	'',	'',	1),
+(17,	2,	'Lihoviny a likéry',	'',	'',	1),
+(18,	2,	'Panáky',	'',	'',	1),
+(19,	2,	'Víno',	'',	'',	1),
+(20,	2,	'Koktejly',	'Long drinks\nDlouhé nápoje o obsahu do 30 cl podávané ve skleničce typu “high ball”. Základem je zvolená lihovina o obsahu 4 cl, zbytek tvoří ovocné šťávy nebo limonády.',	'',	1),
+(21,	15,	'točené',	'',	'',	1),
+(22,	15,	'lahvové',	'',	'',	1),
+(23,	15,	'cider',	'',	'',	1),
+(24,	15,	'nealko pivo',	'',	'',	1),
+(25,	18,	'Vodka',	'',	'',	1),
+(26,	18,	'Rum & Cachaca',	'',	'',	1),
+(27,	18,	'Tequila',	'',	'',	1),
+(28,	18,	'Gin',	'',	'',	1),
+(29,	18,	'Whisky a Burbon',	'',	'',	1),
+(30,	18,	'Koňak',	'',	'',	1),
+(31,	18,	'Brandy',	'',	'',	1),
+(32,	19,	'Rozlévaná vína',	'',	'',	1),
+(33,	19,	'Šumivá vína',	'',	'',	1),
+(34,	19,	'Sekty',	'',	'',	1),
+(35,	19,	'Desertní vína',	'',	'',	1),
+(36,	20,	'Long drinks',	'',	'',	1),
+(37,	20,	'Fancy drinks /High balls',	'nejvolnější kategorie koktejlů, kde báze tvoří až 7cl alkoholu s bohatou kombinací různých složek',	'',	1),
+(38,	20,	'Coladas',	'',	'',	1),
+(39,	20,	'Mojitos/Caipirinhas',	'',	'',	1),
+(40,	20,	'After Dinner Cocktails',	'Koktejly podávané po jídle o obsahu do 10cl s kombinacemi destilátů, likérů, sirupů či šťáv a smetany.',	'',	1),
+(41,	20,	'Shooters',	'Malé koktejly o obsahu do 5cl podávané v panáku. likéry se vrství dle barev a obsahu cukru na sebe. Mohou se připravovat i promícháním v shakeru.',	'',	1),
+(42,	20,	'Soft Drinks',	'nealkoholické nápoje připravované v mixéru či v shaker. Obsahují ovocné nebo zeleninové šťávy, smetanu a čerstvé ovoce, popřípadě ovocné sirupy.',	'',	1);
 
 CREATE TABLE `clients` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -400,6 +443,8 @@ CREATE TABLE `main_menu` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
+INSERT INTO `main_menu` (`id`, `name`, `route`, `icon`) VALUES
+(1,	'Novinky',	'News:default',	'twitter');
 
 CREATE TABLE `orders` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -438,4 +483,4 @@ INSERT INTO `tables` (`id`, `number`, `name`, `detail`) VALUES
 (4,	4,	NULL,	''),
 (5,	5,	NULL,	'');
 
--- 2013-05-15 10:34:47
+-- 2013-05-15 10:58:47
