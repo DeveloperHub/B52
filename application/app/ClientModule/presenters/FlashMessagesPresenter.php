@@ -29,6 +29,7 @@ class FlashMessagesPresenter extends BasePresenter
 	public function renderDefault()
 	{
 		$this->template->messages = $this->flashMessagesRepository->findByClient($this->idClient);
+		$this->flashMessagesRepository->read($this->idClient);
 	}
 
 
@@ -91,13 +92,4 @@ class FlashMessagesPresenter extends BasePresenter
 		$this->redirect('Offer:default');
 	}
 
-
-	/**
-	 * @param int $id
-	 */
-	public function handleRead($id)
-	{
-		$this->flashMessagesRepository->update(array('unread' => false), $id);
-		$this->redirect('this');
-	}
 }

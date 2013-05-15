@@ -55,4 +55,14 @@ class FlashMessagesRepository extends BaseRepository
 		$query = 'SELECT COUNT([id]) FROM %n WHERE [unread] AND [to]="waitress"';
 		return $this->db->query($query, $this->table)->fetchSingle();
 	}
+
+
+	/**
+	 * @param int $idClient
+	 */
+	public function read($idClient)
+	{
+		$query = 'UPDATE %n SET [unread]=0 WHERE [to_client]=%i';
+		$this->db->query($query, $this->table, $idClient);
+	}
 }
