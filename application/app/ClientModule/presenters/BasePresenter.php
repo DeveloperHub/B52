@@ -19,6 +19,9 @@ abstract class BasePresenter extends \BasePresenter
 	/** @var \Nette\Http\SessionSection */
 	protected $user;
 
+	/** @var array */
+	protected $paymentMethod;
+
 
 	protected function startup()
 	{
@@ -26,6 +29,11 @@ abstract class BasePresenter extends \BasePresenter
 
 		$this->extrasRepository = $this->context->extrasRepository;
 		$this->flashMessagesRepository = $this->context->flashMessagesRepository;
+
+		$this->paymentMethod = array(
+			'cash' => 'hotově',
+			'card' => 'kartou',
+		);
 
 		$this->idClient = 1;
 

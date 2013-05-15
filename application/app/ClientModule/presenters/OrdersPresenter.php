@@ -71,13 +71,9 @@ class OrdersPresenter extends BasePresenter
 	}
 
 
-	public function renderBasket()
+	public function renderPay()
 	{
-		$orders = $this->ordersRepository->findForBasket($this->idClient);
-		foreach ($orders as &$order) {
-			$order->extras = $this->extrasRepository->findByIds($order->extras_items);
-		}
-		$this->template->orders = $orders;
+		$this->template->paymentMethod = $this->paymentMethod;
 	}
 
 
