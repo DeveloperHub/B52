@@ -45,6 +45,10 @@ abstract class BasePresenter extends \BasePresenter
 		$this->user = $this->getSession('user');
 		$data = $this->getUser()->getIdentity()->getData();
 		$this->user->name = $data['name'];
+
+		if (!isset($this->user->idTable) && $this->getPresenter()->getName() != 'Client:Menu') {
+			$this->redirect('Menu:setTable');
+		}
 	}
 
 

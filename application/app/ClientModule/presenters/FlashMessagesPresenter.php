@@ -38,7 +38,13 @@ class FlashMessagesPresenter extends BasePresenter
 		try {
 			$table = $this->tableRepository->findById($this->user->idTable);
 
-			$message = 'Klient ' . $this->user->name . ' vás volá ke stolu ' . (isset($table->name) ? $table->name : $table->number) . '.';
+			$message =
+				'Klient ' .
+				$this->user->name .
+				' vás volá ke stolu ' .
+				(isset($table->name) ? $table->name : $table->number) .
+				'.'
+			;
 			$data = array(
 				'posted' => new DateTime,
 				'from' => 'client',
