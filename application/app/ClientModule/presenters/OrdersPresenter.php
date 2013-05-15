@@ -81,10 +81,13 @@ class OrdersPresenter extends BasePresenter
 	}
 
 
-	public function handleSend()
+	public function renderReceipt()
 	{
-		$this->ordersRepository->sendAnOrder($this->idClient);
-		$this->redirect('Offer:default');
+		$orders = $this->ordersRepository->findForReceipt($this->idClient);
+		foreach ($orders as &$order) {
+			$order->extras = $this->extrasRepository->findByIds($order->extras_items);
+		}
+		$this->template->orders = $orders;
 	}
 
 
@@ -150,6 +153,7 @@ class OrdersPresenter extends BasePresenter
 			'id_items' => $values->item,
 			'id_tables' => $values->table,
 			'id_clients' => $this->idClient,
+			'ordered' => new DateTime(),
 			'count' => $values->count,
 		);
 
@@ -166,6 +170,7 @@ class OrdersPresenter extends BasePresenter
 		}
 
 		$this->ordersRepository->insert($data);
-		$this->redirect('Orders:basket');
+		$this->flashMessage('Objednávka odeslána.', 'ok');
+		$this->redirect('Offer:default');
 	}
 }

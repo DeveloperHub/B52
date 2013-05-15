@@ -94,6 +94,25 @@ class OrdersRepository extends BaseRepository
 
 	/**
 	 * @param int $idClient
+	 *
+	 * @return array of DibiRow
+	 */
+	public function findForReceipt($idClient)
+	{
+		$query =
+			'SELECT [o.id], [o.status], [o.extras_items], [i.name],' .
+			'IFNULL([i.quantity],[v.quantity]) AS [quantity], IFNULL([i.price],[v.price]) AS [price] ' .
+			'FROM %n AS [o] ' .
+			'LEFT JOIN %n AS [i] ON [i.id]=[o.id_items] ' .
+			'LEFT JOIN %n AS [v] ON [v.id]=[o.id_items_variations] ' .
+			'WHERE [id_clients]=%i'
+		;
+		return $this->db->query($query, $this->table, 'items', 'items_variations', $idClient)->fetchAll();
+	}
+
+
+	/**
+	 * @param int $idClient
 	 */
 	public function sendAnOrder($idClient)
 	{

@@ -2,20 +2,23 @@
 <section class="section-box">
 	<nav class="section-menu">
 		<div class="menu-header">
-			<a href=""><i class="icon-circle-arrow-left"></i></a><span><i class="icon-"></i> Shrnutí objednávky</span>
+			<a n:href="Offer:"><i class="icon-circle-arrow-left"></i></a><span><i class="icon-"></i> Shrnutí objednávek</span>
 		</div>
 		<div class="order-form item-detail">
+			{if count($orders)}
 			{var $price = 0}
 			<div n:foreach="$orders as $order">
 				{? $price += $order->price}
 				{$order->name}{if $order->quantity} - {$order->quantity}{/if} - {$order->price|currency}
 				<div n:ifset="$order->extras" n:foreach="$order->extras as $extra">
-					{? $price += $extra->price}
-					{$extra->name}{if $extra->quantity} - {$extra->quantity}{/if} - {$extra->price|currency}
+					{$extra->name}{if $extra->quantity} - {$extra->quantity}{/if}
 				</div>
 			</div>
-			<div>Celkem: {$price|currency}</div>
-			<a n:if="count($orders)" n:href="Send!" class="btn-order" title="Odeslat">Odeslat</a>
+			<div><strong>Celkem: {$price|currency}</strong></div>
+			<a n:href="FlashMessages:pay" class="btn-order" title="Donést účet">Donést účet</a>
+			{else}
+			<div><strong>Nejprve si objednejte.</strong></div>
+			{/if}
 		</div>
 	</nav>
 </section>
