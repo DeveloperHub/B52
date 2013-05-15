@@ -22,9 +22,13 @@ common:
 
 		session:
 			expiration: 14 days
+			save_path: %tempDir%/sessions
+
+		container:
+			debugger: true
 
 	services:
-		#authenticator: Authenticator
+		authenticator: Authenticator
 		routerFactory: RouterFactory
 		router: @routerFactory::createRouter
 		connection:

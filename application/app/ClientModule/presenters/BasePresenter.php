@@ -27,6 +27,11 @@ abstract class BasePresenter extends \BasePresenter
 	{
 		parent::startup();
 
+		if (!$this->getUser()->isInRole('client')) {
+			$this->flashMessage('Přihlašte se.', 'info');
+			$this->redirect('Sign:in');
+		}
+
 		$this->extrasRepository = $this->context->extrasRepository;
 		$this->flashMessagesRepository = $this->context->flashMessagesRepository;
 
@@ -35,12 +40,11 @@ abstract class BasePresenter extends \BasePresenter
 			'card' => 'kartou',
 		);
 
-		$this->idClient = 1;
+		$this->idClient = $this->getUser()->getId();
 
 		$this->user = $this->getSession('user');
-		if (!isset($this->user->idTable)) {
-			$this->user->idTable = 1;
-		}
+		$data = $this->getUser()->getIdentity()->getData();
+		$this->user->name = $data['name'];
 	}
 
 

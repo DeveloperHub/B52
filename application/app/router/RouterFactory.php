@@ -29,8 +29,11 @@ class RouterFactory
 		$waitressRouter[] = new Route('waitress/<presenter>[/<action>][/<id>]', 'Orders:default');
 
 		$router[] = $clientRouter = new RouteList('Client');
-		$clientRouter[] = new Route('<presenter=Orders>/<action=item>/<id>[/<idVariation>]');
-		$clientRouter[] = new Route('<presenter>/<action>[/<id>]', 'Offer:default');
+		$clientRouter[] = new Route('client/<presenter=Orders>/<action=item>/<id>[/<idVariation>]');
+		$clientRouter[] = new Route('client/<presenter>/<action>[/<id>]', 'Offer:default');
+
+		$router[] = $freeRouter = new RouteList();
+		$freeRouter[] = new Route('<presenter>/<action>', 'Sign:in');
 
 		return $router;
 	}

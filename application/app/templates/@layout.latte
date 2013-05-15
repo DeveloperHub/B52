@@ -35,7 +35,7 @@
 <script src="{$basePath}/js/jquery.js"></script>
 <script src="{$basePath}/js/netteForms.js"></script>
 <script src="{$basePath}/js/bootstrap.min.js"></script>
-<script>
+<script n:if="$user->isLoggedIn()">
 	var serverPath = 'http://' + document.domain + '/api';
 
 	// setting the reload interval [ms]

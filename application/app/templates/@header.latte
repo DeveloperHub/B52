@@ -1,5 +1,5 @@
 <div class="header-box">
-	<nav class="menu" id="menu">
+	<nav n:if="$user->isLoggedIn()" class="menu" id="menu">
 		<a n:href="Menu:default" title="menu"><i class="icon-reorder"></i></a>
 	</nav>
 	<div class="logo">
@@ -7,7 +7,7 @@
 			<i class="icon-beer"></i> B52
 		</a>
 	</div>
-	<nav class="user" id="user">
+	<nav n:if="$user->isLoggedIn()" class="user" id="user">
 		<a n:href="FlashMessages:default" id="flashClientInfo" title="user">{$countMessages}</a>
 	</nav>
 </div>
