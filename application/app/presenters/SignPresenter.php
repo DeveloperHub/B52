@@ -101,7 +101,8 @@ class SignPresenter extends BasePresenter
 			$this->flashMessage('Přihlášení bylo úspěšné.', 'ok');
 			$this->redirect('Client:Offer:');
 		} catch (NS\AuthenticationException $e) {
-			$form->addError('Neplatný e-mail nebo heslo.');
+			$this->flashMessage('Neplatný e-mail nebo heslo.', 'error');
+			$form->addError(null);
 		}
 	}
 }
