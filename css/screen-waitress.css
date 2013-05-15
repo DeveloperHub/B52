@@ -329,3 +329,27 @@ tr:nth-child(odd).gra-brown {
 	background-image: linear-gradient(transparent 50%, rgba(255,255,255,.5) 50%);
 	background-size: 50px 50px;
 }
+
+/* Flash messages */
+.flash-messages {
+	padding: 1em;
+	margin: .5em;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+}
+.flash-messages i { float: left; margin: 0 .3em 0 0; font-size: 3em;}
+.flash-messages .header { display: block;}
+.message-ok { border: 1px solid #9cda4b; background: #e6f9ce;}
+.message-error	{ border: 1px solid #ed7f7f; background: #ffe5e5;}
+.message-info	{ border: 1px solid #7392d0; background: #dae6ff;}
+
+.message-ok .header,
+.message-ok i	{ color: #61ad00;}
+.message-error .header,
+.message-error i	{ color: #dc0000;}
+.message-info .header,
+.message-info i	{ color: #2c4b8d;}
+
+.flash-messages-small { padding: .2em; margin: .2em; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px;}
+.flash-messages-small i { font-size: 1.5em;}

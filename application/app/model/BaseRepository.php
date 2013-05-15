@@ -78,7 +78,7 @@ abstract class BaseRepository extends \Nette\Object
 	{
 		$query = 'UPDATE %n SET %a WHERE [id]=%i';
 		$this->db->query($query, $this->table, $data, $id);
-		return $id;
+		return $this->db->affectedRows;;
 	}
 
 

@@ -49,6 +49,11 @@ class OrdersPresenter extends BasePresenter
 	 */
 	public function handleChangeStatus($id, $status)
 	{
+		if (!$this->ordersRepository->findById($id)) {
+			$this->flashMessage('Tato objednávka byla zrušena.', 'info');
+			$this->redirect('this');
+		}
+
 		$update = array('status' => $status);
 		$this->ordersRepository->update($update, $id);
 
