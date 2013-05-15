@@ -157,6 +157,7 @@ footer { padding: .2em .5em;}
 .menu-header small { text-align: center; display: block;}
 .menu-header a { float: left; font-size: 1.5em; margin: -.2em 0 0 0; text-decoration: none;}
 .menu-header a:hover { background: transparent; color: #000;}
+.menu-header a i {font-size: 1em;}
 
 span.separator { color: #339900;}
 
@@ -191,6 +192,10 @@ a.btn-order:hover i {}
 .notifi-list strong { color: #339900;}
 .notifi-list i {color: #B58641; float: right; margin: 0 .5em 0 0;}
 .notifi-list .unread { background: #b3d4fc;}
+
+/* Order history */
+.order-history { clear: both; border-collapse: collapse;}
+.order-history td { padding-left: 0; border: 1px solid silver; }
 
 /* Bill lines */
 .account-lines { display: table; margin: 1em 0 1em 0;}
@@ -241,9 +246,34 @@ div.loading {
 div.loading i { font-size: 2em; float: none; color: #666;}
 div.loading span { display: inline-block; font-size: 1.5em;}
 
+/* Form */
+form {padding: .5em; }
+form input[type="number"],
+form select {
+	height: 2em;
+	padding: 0 .2em;
+	font-size: 1.2em;
+	text-align: center;
+	min-width: 5em;
+}
+form label {display: block; text-align: right;}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
+	height: 2.5em;
+	margin: 0 0 0.2em;
+	padding: 0 .2em;
+}
+form input[type="submit"] {
+	background: #B58641; border: none; color: #fff; font-size: 1.2em; height: 1.8em; margin: .4em 0; padding: 0 .4em; cursor: pointer; width: 100%; 	-webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px;
+	-webkit-appearance: none;
+}
+form input[type="submit"]:hover {background: #d00206; color: #fff;}
+
 /* Flash messages */
 .flash-messages {
-	padding: 1em;
+	padding: 0 .5em;
 	margin: .5em;
 	-webkit-border-radius: 8px;
 	-moz-border-radius: 8px;

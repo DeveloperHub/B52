@@ -111,6 +111,10 @@ header a.logo i { text-align: center; display: block; margin: 0; float: none; fo
 header a.logo:hover,
 header a.logo:hover i { color: #339933; text-decoration: none;}
 
+header .active {background: silver; color: #fff;}
+header .active a,
+header .active a i {color: #fff;}
+
 /* Menu */
 header a 			{ display: block; font-size: 1.3em; line-height: 1.5em; text-decoration: none;}
 header i 			{ text-decoration: none; float: left; font-size: 1.5em; margin: 0 .3em 0 0; color: #666;}
@@ -189,10 +193,10 @@ header a:hover i		{ color: #339933 !important;}
 /* Table buttons */
 .table-orders .btn-item 	  { float: right;}
 .table-orders .btn-item a     { text-decoration: none;}
-.table-orders a i 			  { font-size: 2em; line-height: 1em;}
+.table-orders a i 			  { font-size: 3em; line-height: 1em;}
 .table-orders a .icon-tags,
 .table-orders a .icon-star,
-.table-orders a .icon-spinner 	  { color: #ff9933;}
+.table-orders a .icon-spinner 	  { color: #responsive-template;}
 .table-orders a .icon-ok 	  { color: #669933;}
 .table-orders a i.ico-done 	  { color: #666; text-decoration: none;}
 .table-orders a:hover 		  { text-decoration: none;}
