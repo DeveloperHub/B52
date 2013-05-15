@@ -1,0 +1,14 @@
+{block content}
+
+<section class="section-box">
+	<nav class="section-menu">
+		<div class="menu-header">
+			<a n:href="Orders:receipt"><i class="icon-circle-arrow-left"></i> </a> <span>Způsob platby</span>
+		</div>
+		<div class="item-detail">
+			<a n:foreach="$paymentMethod as $method => $name" n:href="FlashMessages:pay $method" class="btn-order">
+				<i class="icon-chevron-right"></i> {$name|upper}
+			</a>
+		</div>
+	</nav>
+</section>

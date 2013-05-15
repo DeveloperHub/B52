@@ -58,12 +58,20 @@ class FlashMessagesPresenter extends BasePresenter
 	}
 
 
-	public function actionPay()
+	public function actionPay($method)
 	{
 		try {
 			$table = $this->tableRepository->findById($this->user->idTable);
 
-			$message = 'Klient ' . $this->user->name . ' u stolu ' . (isset($table->name) ? $table->name : $table->number) . ' bude platit.';
+			$message =
+				'Klient ' .
+				$this->user->name .
+				' u stolu ' .
+				(isset($table->name) ? $table->name : $table->number) .
+				' bude platit ' .
+				$this->paymentMethod[$method] .
+				'.'
+			;
 			$data = array(
 				'posted' => new DateTime,
 				'from' => 'client',
@@ -74,7 +82,7 @@ class FlashMessagesPresenter extends BasePresenter
 			);
 			$this->flashMessagesRepository->insert($data);
 
-			$this->flashMessage('Informace o placení předána.', 'ok');
+			$this->flashMessage('Požádáno o účet.', 'ok');
 		} catch (\DibiDriverException $e) {
 			Debugger::log($e);
 			$this->flashMessage('Nepodařilo se informovat o placení.', 'error');
