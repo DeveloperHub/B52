@@ -21,6 +21,10 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 			'done' => 'hotovo',
 			'paid' => 'zaplaceno',
 		);
+
+		if ($this->getPresenter()->getName() == 'Sign' && $this->getUser()->isLoggedIn()) {
+			$this->redirect('Client:Offer:');
+		}
 	}
 
 
