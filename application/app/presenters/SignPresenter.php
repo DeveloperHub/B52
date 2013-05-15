@@ -24,9 +24,9 @@ class SignPresenter extends BasePresenter
 	protected function createComponentSignUpForm()
 	{
 		$form = new Form;
-		$form->addText('name', 'Jméno:', 30, 20)
+		$form->addText('name', 'Jméno:', 30, 50)
 				->setRequired('Vyplňte %label.');
-		$form->addText('email', 'E-mail:', 30, 20)
+		$form->addText('email', 'E-mail:', 30, 50)
 				->setType('email')
 				->setRequired('Vyplňte %label.')
 				->addRule(Form::EMAIL, 'Napište %label správně.');
@@ -80,7 +80,7 @@ class SignPresenter extends BasePresenter
 	protected function createComponentSignInForm()
 	{
 		$form = new Form;
-		$form->addText('email', 'E-mail:', 30, 20)
+		$form->addText('email', 'E-mail:', 30, 50)
 				->setType('email')
 				->setRequired('Vyplňte %label.');
 		$form->addPassword('password', 'Heslo:', 30)
