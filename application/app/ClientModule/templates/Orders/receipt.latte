@@ -5,9 +5,11 @@
 			<a n:href="Offer:"><i class="icon-circle-arrow-left"></i></a><span><i class="icon-"></i> Shrnutí objednávek</span>
 		</div>
 		<div class="order-form item-detail">
-			{if count($orders)}
+		{if count($orders)}
+			{var $toPay = true}
 			{var $price = 0}
 			<div n:foreach="$orders as $order">
+				{if $order->status != 'done'}{? $toPay = false}{/if}
 				{? $price += $order->price}
 				{$order->name}{if $order->quantity} - {$order->quantity}{/if} - {$order->price|currency}
 				<strong>{$orderStatus[$order->status]}</strong>
@@ -19,10 +21,14 @@
 				</div>
 			</div>
 			<div><strong>Celkem: {$price|currency}</strong></div>
-			<a n:href="pay" class="btn-order" title="Donést účet">Donést účet</a>
+			{if $toPay}
+				<a n:href="pay" class="btn-order" title="Donést účet">Donést účet</a>
 			{else}
-			<div><strong>Nejprve si objednejte.</strong></div>
+				<div><strong>Zaplatit můžete až budou všechny objednávky hotové.</strong></div>
 			{/if}
+		{else}
+			<div><strong>Nejprve si objednejte.</strong></div>
+		{/if}
 		</div>
 	</nav>
 </section>
