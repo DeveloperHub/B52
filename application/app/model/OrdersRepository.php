@@ -59,7 +59,7 @@ class OrdersRepository extends BaseRepository
 	{
 		$query =
 			'SELECT [o].*,[t.number],[c.name] AS [client],[i.type],[i.name] AS [item], ' .
-			'IFNULL([i.quantity],[v.quantity]) AS [quantity] ' .
+			'IFNULL([i.quantity],[v.quantity]) AS [quantity], IFNULL([i.price],[v.price]) AS [price] ' .
 			'FROM %n AS [o] ' .
 			'LEFT JOIN %n AS [t] ON [o.id_tables]=[t.id] ' .
 			'LEFT JOIN %n AS [c] ON [o.id_clients]=[c.id] ' .
@@ -138,7 +138,7 @@ class OrdersRepository extends BaseRepository
 	{
 		$query =
 				'SELECT [o].*,[t.number],[c.name] AS [client],[i.type],[i.name] AS [item], ' .
-				'IFNULL([i.quantity],[v.quantity]) AS [quantity] ' .
+				'IFNULL([i.quantity],[v.quantity]) AS [quantity], IFNULL([i.price],[v.price]) AS [price] ' .
 				'FROM %n AS [o] ' .
 				'LEFT JOIN %n AS [t] ON [o.id_tables]=[t.id] ' .
 				'LEFT JOIN %n AS [c] ON [o.id_clients]=[c.id] ' .

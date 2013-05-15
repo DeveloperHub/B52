@@ -3,7 +3,9 @@
 	<table class="table-orders clean-table">
 		<tr>
 			<td>
+				{var $totalPrice = 0}
 				<ul n:foreach="$orders as $order" class="order-history">
+					{? $totalPrice += $order->price}
 					<li>
 						<table>
 							<tr>
@@ -14,6 +16,10 @@
 								<td class="order-history-name">
 									<strong>Objednávka:</strong>
 									{$order->count}x {$order->item}{if $order->quantity} ({$order->quantity}){/if}
+									<small n:ifset="$order->extras" n:inner-foreach="$order->extras as $extra">
+										{$extra->name}{if $extra->quantity} ({$extra->quantity}){/if}{sep}, {/sep}
+									</small>
+									<strong>{$order->price|currency}</strong>
 								</td>
 								<td class="order-history-table">
 									<strong>Stůl:</strong>
@@ -24,8 +30,6 @@
 									{if $order->status == 'wait'}čeká
 									{elseif $order->status == 'in progress'}připravuje se
 									{elseif $order->status == 'done'}hotovo
-									{elseif $order->status == 'cancel'}ke zrušení
-									{elseif $order->status == 'canceled'}zrušeno
 									{elseif $order->status == 'paid'}zaplaceno
 									{/if}
 								</td>
@@ -35,7 +39,7 @@
 				</ul>
 
 				{ifset $idClient}
-					<a n:href="Pay! $idClient, $idMessage" class="btn-order"><i class="icon-money"></i>zaplatit</a>
+					<a n:href="Pay! $idClient, $idMessage" class="btn-order"><i class="icon-money"></i>zaplatit {$totalPrice|currency}</a>
 				{else}
 					{control paginator}
 				{/ifset}

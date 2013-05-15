@@ -16,6 +16,9 @@ class HistoryPresenter extends BasePresenter
 	/** @var \FlashMessagesRepository */
 	private $flashMessagesRepository;
 
+	/** @var \ExtrasRepository */
+	private $extrasRepository;
+
 
 	protected function startup()
 	{
@@ -23,21 +26,29 @@ class HistoryPresenter extends BasePresenter
 
 		$this->ordersRepository = $this->context->ordersRepository;
 		$this->flashMessagesRepository = $this->context->flashMessagesRepository;
+		$this->extrasRepository = $this->context->extrasRepository;
 	}
 
 
 	public function renderDefault($id, $idMessage)
 	{
 		if (isset($id)) {
-			$this->template->orders = $this->ordersRepository->findBill($id);
+			$orders = $this->ordersRepository->findBill($id);
 			$this->template->idClient = $id;
 			$this->template->idMessage = $idMessage;
 		} else {
 			$paginator = $this['paginator']->getPaginator();
 			$paginator->itemCount = count($this->ordersRepository->findAll());
 
-			$this->template->orders = $this->ordersRepository->findForHistory($paginator->itemsPerPage, $paginator->offset);
+			$orders = $this->ordersRepository->findForHistory($paginator->itemsPerPage, $paginator->offset);
 		}
+
+		foreach ($orders as &$order) {
+			if ($order->type == 'food') {
+				$order->extras = $this->extrasRepository->findByIds($order->extras_items);
+			}
+		}
+		$this->template->orders = $orders;
 	}
 
 
