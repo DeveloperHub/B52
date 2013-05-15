@@ -29,7 +29,7 @@ abstract class BasePresenter extends \BasePresenter
 
 		if (!$this->getUser()->isInRole('client')) {
 			$this->flashMessage('Přihlašte se.', 'info');
-			$this->redirect('Sign:in');
+			$this->redirect(':Sign:in');
 		}
 
 		$this->extrasRepository = $this->context->extrasRepository;
