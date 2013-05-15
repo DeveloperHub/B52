@@ -258,7 +258,7 @@ td.order-history-table { width: 10%;}
 td.order-history-state { }
 
 /* Notifications */
-.notifications li { text-decoration: line-through;}
+.notifications li { text-decoration: line-through; min-height: 3em;}
 .notifications li.unread { text-decoration: none;}
 
 /* Flash messages */
