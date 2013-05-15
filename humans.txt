@@ -4,9 +4,9 @@
 # TEAM
 
 	Martin Humpal ------- Coder&UX designer -- @humitch
-	Radim Daniel Pánek -- Backend ninja ------ @humitch
+	Radim Daniel Pánek -- Backend ninja ------ @
 	Ladislav Vondráček -- API ---------------- @
-	Michal Řeháček ------ API ---------------- @humitch
+	Michal Řeháček ------ API ---------------- @
 
 
 # THANKS
@@ -16,4 +16,4 @@
 # TECHNOLOGY COLOPHON
 
     HTML5, CSS3
-    Normalize.css, jQuery, Modernizr, Angularjs, MongoDB, ...
+    ...
