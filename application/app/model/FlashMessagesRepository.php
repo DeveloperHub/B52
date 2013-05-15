@@ -65,4 +65,14 @@ class FlashMessagesRepository extends BaseRepository
 		$query = 'UPDATE %n SET [unread]=0 WHERE [to_client]=%i';
 		$this->db->query($query, $this->table, $idClient);
 	}
+
+
+	/**
+	 * @param int $id
+	 */
+	public function deleteByClient($id)
+	{
+		$query = 'DELETE FROM %n WHERE [to_client]=%i';
+		$this->db->query($query, $this->table, $id);
+	}
 }

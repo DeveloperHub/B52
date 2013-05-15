@@ -61,6 +61,7 @@ class HistoryPresenter extends BasePresenter
 		try {
 			$this->ordersRepository->paid($id);
 			$this->flashMessagesRepository->update(array('unread' => false), $idMessage);
+			$this->flashMessagesRepository->deleteByClient($id);
 
 			$data = array(
 				'posted' => new DateTime,
