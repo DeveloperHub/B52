@@ -1,8 +1,5 @@
 {block content}
 
-
-
-
 <section class="section-box">
 	<nav class="section-menu">
 		<div class="menu-header">
@@ -17,7 +14,7 @@
 			{else}
 			<a n:href="Orders:item, $item->id" class="btn-order">
 				<i class="icon-chevron-right"></i>
-				<small>{$item->quantity} - {$item->price|currency}</small> OBJEDNAT
+				<small>{if $item->quantity}{$item->quantity} - {/if}{$item->price|currency}</small> OBJEDNAT
 			</a>
 			{/if}
 			<div n:foreach="$extras as $name => $extra" class="item-info">
